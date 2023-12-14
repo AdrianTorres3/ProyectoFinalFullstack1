@@ -1,3 +1,18 @@
+<style>
+.v-card--reveal {
+  align-items: center;
+  bottom: 0;
+  justify-content: center;
+  opacity: .5;
+  position: absolute;
+  width: 100%;
+}
+
+.v-application--wrap {
+  min-height: 100vh;
+  justify-content: center;
+}
+</style>
 <!-- <template>
   <v-layout row wrap>
     <v-flex xs12>
@@ -159,8 +174,18 @@ export default {
 
 <template>
   <v-layout row wrap>
-    <v-flex xs4 v-for="pelicula in peliculas" :key="pelicula._id">
-      <v-card>
+    <v-carousel cover cycle height="400" show-arrows-on-hover hide-delimiter-background class=" mx-auto ma-2 "
+      delimiter-icon="mdi-minus">
+      <v-carousel-item style="width:max-content;height:fit-content;"
+        src="https://assetsio.reedpopcdn.com/souls-week-revisiting-dark-souls-3-the-dark-souls-3-of-dark-souls-1645011212983.jpg?width=1200&height=1200&fit=bounds&quality=70&format=jpg&auto=webp"></v-carousel-item>
+
+      <v-carousel-item src="https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/media/image/2017/02/guia-todos-trucos-consejos-minecraft.jpg?tf=3840x"></v-carousel-item>
+
+      <v-carousel-item src="https://image.api.playstation.com/vulcan/ap/rnd/202209/2121/PBiQRnOysNbFRzrZanE9l2vp.jpg"></v-carousel-item>
+    </v-carousel>
+
+    <!-- <v-flex xs4 v-for="pelicula in peliculas" :key="pelicula._id"> -->
+    <!-- <v-card>
         <v-card-title primary-title>
           <div>
             <div class="headline">
@@ -182,7 +207,104 @@ export default {
         </v-card-actions>
       </v-card>
     </v-flex>
-    <v-btn @click="eliminarPeliculas()" text color="red">Borrar todo</v-btn>
+    <v-btn @click="eliminarPeliculas()" text color="red">Borrar todo</v-btn> -->
+    <v-container class="grey lighten-5 mb-6">
+
+      <v-row>
+        <v-col>
+          <v-hover v-slot:default="{ hover }">
+            <v-card class="mx-auto" color="grey lighten-4">
+              <v-img :aspect-ratio="4 / 5"
+                src="https://sm.ign.com/ign_es/screenshot/default/skyrim-logo-6553-6831-hd-wallpapers_qq83.jpg">
+                <v-expand-transition>
+                  <div v-if="hover"
+                    class="d-flex transition-fast-in-fast-out blue darken-2 v-card--reveal display-3 white--text"
+                    style="height: 100%;"><span class="h6" font-weight-light>Explora un mundo de fantasia....</span>
+
+                  </div>
+
+                </v-expand-transition>
+              </v-img>
+              <v-card-text class="pt-6" style="position: relative;">
+
+                <!-- <div class="font-weight-light grey--text title mb-2">For the perfect meal</div> -->
+                <h3 class="display-1 font-weight-light blue--text mb-2">Skyrim</h3>
+                <div class="font-weight-light title mb-2"> Juego de mundo abierto y accion... </div>
+              </v-card-text>
+            </v-card>
+          </v-hover>
+        </v-col>
+        <v-col>
+          <v-hover v-slot:default="{ hover }">
+            <v-card class="mx-auto" color="grey lighten-4">
+              <v-img :aspect-ratio="4 / 5"
+                src="https://sm.ign.com/ign_es/screenshot/default/skyrim-logo-6553-6831-hd-wallpapers_qq83.jpg">
+                <v-expand-transition>
+                  <div v-if="hover"
+                    class="d-flex transition-fast-in-fast-out blue darken-2 v-card--reveal display-3 white--text"
+                    style="height: 100%;"><span class="h6" font-weight-light>Explora un mundo de fantasia....</span>
+
+                  </div>
+
+                </v-expand-transition>
+              </v-img>
+              <v-card-text class="pt-6" style="position: relative;">
+
+                <!-- <div class="font-weight-light grey--text title mb-2">For the perfect meal</div> -->
+                <h3 class="display-1 font-weight-light blue--text mb-2">Skyrim</h3>
+                <div class="font-weight-light title mb-2"> Juego de mundo abierto y accion... </div>
+              </v-card-text>
+            </v-card>
+          </v-hover>
+        </v-col>
+        <v-col>
+          <v-hover v-slot:default="{ hover }">
+            <v-card class="mx-auto" color="grey lighten-4">
+              <v-img :aspect-ratio="4 / 5"
+                src="https://sm.ign.com/ign_es/screenshot/default/skyrim-logo-6553-6831-hd-wallpapers_qq83.jpg">
+                <v-expand-transition>
+                  <div v-if="hover"
+                    class="d-flex transition-fast-in-fast-out blue darken-2 v-card--reveal display-3 white--text"
+                    style="height: 100%;"><span class="h6" font-weight-light>Explora un mundo de fantasia....</span>
+
+                  </div>
+
+                </v-expand-transition>
+              </v-img>
+              <v-card-text class="pt-6" style="position: relative;">
+
+                <!-- <div class="font-weight-light grey--text title mb-2">For the perfect meal</div> -->
+                <h3 class="display-1 font-weight-light blue--text mb-2">Skyrim</h3>
+                <div class="font-weight-light title mb-2"> Juego de mundo abierto y accion... </div>
+              </v-card-text>
+            </v-card>
+          </v-hover>
+        </v-col>
+        <v-col>
+          <v-hover v-slot:default="{ hover }">
+            <v-card class="mx-auto" color="grey lighten-4">
+              <v-img :aspect-ratio="4 / 5"
+                src="https://sm.ign.com/ign_es/screenshot/default/skyrim-logo-6553-6831-hd-wallpapers_qq83.jpg">
+                <v-expand-transition>
+                  <div v-if="hover"
+                    class="d-flex transition-fast-in-fast-out blue darken-2 v-card--reveal display-3 white--text"
+                    style="height: 100%;"><span class="h6" font-weight-light>Explora un mundo de fantasia....</span>
+
+                  </div>
+
+                </v-expand-transition>
+              </v-img>
+              <v-card-text class="pt-6" style="position: relative;">
+
+                <!-- <div class="font-weight-light grey--text title mb-2">For the perfect meal</div> -->
+                <h3 class="display-1 font-weight-light blue--text mb-2">Skyrim</h3>
+                <div class="font-weight-light title mb-2"> Juego de mundo abierto y accion... </div>
+              </v-card-text>
+            </v-card>
+          </v-hover>
+        </v-col>
+      </v-row>
+    </v-container>
   </v-layout>
 </template>
 
