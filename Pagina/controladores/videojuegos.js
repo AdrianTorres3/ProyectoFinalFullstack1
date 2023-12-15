@@ -1,98 +1,10 @@
-// const express = require('express');
-// //Objeto encargado de almacenar las rutas
-// const router = express.Router();
 
-// const Videojuego = require('../modelos/Videojuego');
-
-// //Get con todos los documentos de la BD
-// router.get('/', async (req, res) => {
-
-//     try {
-//         const videojuegos = await Videojuego.find();
-//         console.log(videojuegos);
-//         res.json(videojuegos);
-//     } catch (error) {
-//         return res.status(400).json({
-//             mensaje: "Ocurrio un error",
-//             error
-//         })
-//     }
-// });
-
-// //Get con parametros
-// router.get('/:id', async (req, res) => {
-//     const _id = req.params.id;
-//     try {
-//         const videojuego = await Videojuego.findOne({ _id });
-//         res.json(videojuego);
-
-//     } catch (error) {
-//         return res.status(400).json({
-//             mensaje: "ocurrio un error",
-//             error
-//         })
-
-//     }
-// });
-
-// router.post('/', async (req, res) => {
-//     const videojuego = new Videojuego(req.body);
-//     console.log(req.body);
-//     try {
-//         await videojuego.save();
-//         res.status(200).json({
-//             mensaje: 'Videojuego guardado exitosamente',
-
-//         });
-//     } catch (error) {
-//         return res.status(500).json({
-//             mensaje: "Ocurrio un error",
-//             error
-//         })
-//     }
-// });
-
-// router.put('/:id', async (req, res) => {
-//     const _id = req.params.id;
-//     const body = req.body;
-//     console.log(_id, body);
-//     try {
-//         await Videojuego.findByIdAndUpdate(_id, body);
-//         res.json({
-//             status: "Videojuego updated"
-//         });
-//     } catch (error) {
-//         return res.status(400).json({
-//             mesnaje: "ocurrio un error",
-//             error
-//         })
-//     }
-// });
-
-// router.delete('/:id', async (req, res) => {
-//     const _id = req.params.id;
-//     try{
-//     await Videojuego.findByIdAndDelete(_id);
-//     res.json({
-//         status: 'videojuego deleted'
-//     })
-//     }catch(error){
-//         res.status(400).json({
-//             mensaje:"Ocurrio un error",
-//             error
-//         })
-//     }
-// })
-
-// module.exports = router;
-
-
- const EsquemaVideojuego = require('../modelos/Videojuego');
+const EsquemaVideojuego = require('../modelos/Videojuego');
 const Calificacion = require('../modelos/Calificacion');
 const passport = require('passport')
 
 module.exports.controller = (app) => {
-    //Agregar una pelicula 
+    //Agregar un videojuego
     app.post('/videojuegos', (req, res) => {
         const nuevoVideojuego = new EsquemaVideojuego({
             titulo: req.body.titulo,
@@ -113,30 +25,42 @@ module.exports.controller = (app) => {
         });
     });
 
-    // Obtener todas las peliculas
-    app.get('/peliculas', passport.authenticate('jwt', { session: false }), (req, res) => {
-        EsquemaPelicula.find({}, 'nombre sinopsis anhopub genero')
-        .then((error, peliculas) => {
-            if (error) { 
-                console.log(error);
-                res.send(error);
-            } else {
-                res.send({peliculas});
-            }
+    // Obtener todos los videojuegos
+    app.get('/videojuegos', (req, res) => {
+        EsquemaVideojuego.find({}, 'titulo genero lanzamiento desarrollador precio plataformas descripcion')
+        .then((videojuegos) => {
+             res.send(videojuegos);
+             console.log(videojuegos);
+        }).catch((error)=>{
+            console.log(error);
         });
     });
 
-    // Obtener una pelicula
-    app.get('/api/peliculas/:id', (req, res) => {
-        EsquemaPelicula.findById(req.params.id, 'nombre sinopsis anhopub genero')
-        .then((error, pelicula) => {
+    // Obtener un videojuego por id
+    app.get('/videojuegos/:id', (req, res) => {
+        EsquemaVideojuego.findById(req.params.id, 'titulo genero lanzamiento desarrollador precio plataformas descripcion')
+        .then((error, videojuego) => {
             if (error) {
                 console.error(error);
             } else {
-                res.send(pelicula);
+                res.send(videojuego);
             }
         });
     })
+
+    // Obtener un videojuego por genero
+    app.get('/videojuegos/:genero', (req, res) => {
+        EsquemaVideojuego.find(req.params.genero, 'titulo genero lanzamiento desarrollador precio plataformas descripcion')
+        .then((error, videojuego) => {
+            if (error) {
+                console.error(error);
+            } else {
+                res.send(videojuego);
+            }
+        });
+    })
+
+    
 
    // Calififcar una pelicula
     app.post('/peliculas/calif/:id', (req, res) => {

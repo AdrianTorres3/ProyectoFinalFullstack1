@@ -555,7 +555,7 @@
               <v-spacer></v-spacer>
             </v-toolbar-items>
           </v-slide-group>
-<!-- segundo menu, por si la pantall es chica -->
+          <!-- segundo menu, por si la pantall es chica -->
 
           <v-toolbar-items class="hidden-md-and-up">
 
@@ -563,19 +563,26 @@
               <template v-slot:activator="{ on, attrs }">
                 <div>
                   <router-link style="text-decoration: none; margin-left: 0cm;" v-bind:to="{ name: 'Login' }">
-                    <v-btn color="transparent" depressed class="mt-11">
+                    <v-btn color="transparent" depressed class="mt-15 ml-n3">
                       <v-icon>mdi-account</v-icon>
                       <span>iniciar sesion</span>
                     </v-btn>
                   </router-link>
                 </div>
-                <v-btn flat icon color="white" depressed dark v-bind="attrs" v-on="on">
+                <v-btn flat icon color="white" depressed dark v-bind="attrs" v-on="on" class="mt-3 ml-n5">
                   <v-icon>mdi-view-headline</v-icon>
                 </v-btn>
               </template>
               <v-list
                 style="background-image: url('https://www.bhmpics.com/downloads/gaming-wallpapers-/2.canva-purple-blue-neon-gaming-desktop-backgrounds-pwyzmwkptug.jpg');">
+                <router-link style="text-decoration: none;" v-bind:to="{ name: 'AgregarVideojuego' }">
+                  <v-btn color="transparent" depressed>
+                    <v-icon color="white">mdi-plus</v-icon>
+                    <span class="white--text">Agregar videojuego</span>
+                  </v-btn>
+                </router-link>
                 <v-menu open-on-hover offset-y>
+
                   <template v-slot:activator="{ on, attrs }">
                     <v-btn color="transparent" depressed dark v-bind="attrs" v-on="on">
                       ARPG
@@ -723,6 +730,7 @@
                       </router-link>
 
                     </v-list-item>
+
                   </v-list>
                 </v-menu>
               </v-list>
