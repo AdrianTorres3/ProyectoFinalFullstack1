@@ -28,10 +28,11 @@ export default new Router({
       component: AgregarPelicula,
     },
     {
-      path: '/peliculas/:id',
+      path: '/pelicula',
       name: 'Pelicula',
       component: Pelicula,
     },
+    //  pelicula/:id
     {
       path: '/usuarios/registro',
       name: 'Registro',

@@ -176,12 +176,14 @@ export default {
   <v-layout row wrap>
     <v-carousel cover cycle height="400" show-arrows-on-hover hide-delimiter-background class=" mx-auto ma-2 "
       delimiter-icon="mdi-minus">
-      <v-carousel-item style="width:max-content;height:fit-content;"
+      <v-carousel-item
         src="https://assetsio.reedpopcdn.com/souls-week-revisiting-dark-souls-3-the-dark-souls-3-of-dark-souls-1645011212983.jpg?width=1200&height=1200&fit=bounds&quality=70&format=jpg&auto=webp"></v-carousel-item>
 
-      <v-carousel-item src="https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/media/image/2017/02/guia-todos-trucos-consejos-minecraft.jpg?tf=3840x"></v-carousel-item>
+      <v-carousel-item
+        src="https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/media/image/2017/02/guia-todos-trucos-consejos-minecraft.jpg?tf=3840x"></v-carousel-item>
 
-      <v-carousel-item src="https://image.api.playstation.com/vulcan/ap/rnd/202209/2121/PBiQRnOysNbFRzrZanE9l2vp.jpg"></v-carousel-item>
+      <v-carousel-item
+        src="https://image.api.playstation.com/vulcan/ap/rnd/202209/2121/PBiQRnOysNbFRzrZanE9l2vp.jpg"></v-carousel-item>
     </v-carousel>
 
     <!-- <v-flex xs4 v-for="pelicula in peliculas" :key="pelicula._id"> -->

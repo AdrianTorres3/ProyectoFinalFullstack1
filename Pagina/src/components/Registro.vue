@@ -24,10 +24,11 @@
      type="password"
     ></v-text-field>
     <v-btn
+     class="purple lighten-2 white--text"
      @click="enviar"
      :disabled="!valido"
-    >Enviar</v-btn>
-    <v-btn @click="limpiar">Limpiar</v-btn>
+    >Registrarse</v-btn>
+    <v-btn @click="limpiar" class="purple darken-1 white--text">Limpiar</v-btn>
   </v-form>
 </template>
 

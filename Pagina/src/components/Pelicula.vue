@@ -1,24 +1,60 @@
+
 <template>
-  <v-layout row wrap>
-    <v-flex xs4>
-      <v-card>
-        <v-card-title primary-title>
-          <div>
-            <div class="headline">{{ pelicula.nombre }}</div>
-            <span class="grey--text">
-              {{ pelicula.anhopub }} &middot; {{ pelicula.genero }}
-            </span>
-          </div>
-        </v-card-title>
-        <h6 class="card-title" v-if="current_user"
-          @click="calificar">Calificar esta película</h6>
-        <!-- <h6 class="card-title" @click="calificar">Calificar esta película</h6> -->
-        <v-card-text>
-          {{ pelicula.sinopsis }}
-        </v-card-text>
-      </v-card>
-    </v-flex>
-  </v-layout>
+  <v-container>
+    <v-row>
+      <v-col>
+        <v-img :aspect-ratio="1 / 1" class="rounded-xl"
+          src="https://sm.ign.com/ign_es/screenshot/default/skyrim-logo-6553-6831-hd-wallpapers_qq83.jpg"></v-img>
+      </v-col>
+      <v-col>
+        <v-card elevation="15" class="rounded-xl">
+          <v-card-title class="text-h3 mb-5">
+            The elder scrolls: Skyrim
+          </v-card-title>
+          <v-card-subtitle class="text-left text h3">
+            Género: RPG, mundo abierto, acción
+          </v-card-subtitle>
+          <v-card-subtitle class="text-left text h4 mt-n6">
+            Fecha de lanzamiento: 2015
+          </v-card-subtitle>
+          <v-card-subtitle class="text-left text h4 mt-n6">
+            Desarrollador: Bethesda games
+          </v-card-subtitle>
+          <v-card-subtitle class="text-left text h4 mt-n6">
+            Precio: $ 400
+          </v-card-subtitle>
+          <v-card-subtitle class="text-left text h4 mt-n6">
+            Plataformas: PC, Xbox, Play station
+          </v-card-subtitle>
+          <v-card-subtitle class="text-left text h4 mt-n6 mb-n2">
+            Reseña:
+          </v-card-subtitle>
+          <v-card-text class="text-left">
+            Es un juego de accion y mundo abierto, lleno de peligros en cada momento.
+          </v-card-text>
+        </v-card>
+      </v-col>
+    </v-row>
+    <v-layout row wrap>
+      <v-flex xs4>
+        <v-card>
+          <v-card-title primary-title>
+            <div>
+              <div class="headline">{{ pelicula.nombre }}</div>
+              <span class="grey--text">
+                {{ pelicula.anhopub }} &middot; {{ pelicula.genero }}
+              </span>
+            </div>
+          </v-card-title>
+          <h6 class="card-title" v-if="current_user" @click="calificar">Calificar esta película</h6>
+          <h6 class="card-title" @click="calificar">Calificar esta película</h6>
+          <v-card-text>
+            {{ pelicula.sinopsis }}
+          </v-card-text>
+        </v-card>
+      </v-flex>
+    </v-layout>
+  </v-container>
 </template>
 
 <script>
