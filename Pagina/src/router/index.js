@@ -2,7 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import Inicio from '@/components/Inicio';
 import Contacto from '@/components/Contacto';
-import AgregarPelicula from '@/components/AgregarPelicula';
+import AgregarVideojuego from '@/components/AgregarVideojuego';
 import Pelicula from '@/components/Pelicula';
 import Registro from '@/components/Registro';
 import Login from '@/components/Login';
@@ -23,9 +23,9 @@ export default new Router({
       component: Contacto,
     },
     {
-      path: '/peliculas/agregar',
-      name: 'AgregarPelicula',
-      component: AgregarPelicula,
+      path: '/videojuegos/agregar',
+      name: 'AgregarVideojuego',
+      component: AgregarVideojuego,
     },
     {
       path: '/pelicula',

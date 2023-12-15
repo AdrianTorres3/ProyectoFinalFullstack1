@@ -27,7 +27,7 @@
             Plataformas: PC, Xbox, Play station
           </v-card-subtitle>
           <v-card-subtitle class="text-left text h4 mt-n6 mb-n2">
-            Reseña:
+            Descripción:
           </v-card-subtitle>
           <v-card-text class="text-left">
             Es un juego de accion y mundo abierto, lleno de peligros en cada momento.

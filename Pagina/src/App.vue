@@ -537,7 +537,7 @@
                 </v-list>
               </v-menu>
               <div>
-                <router-link style="text-decoration: none; margin-left: 0cm;" v-bind:to="{ name: 'AgregarPelicula' }">
+                <router-link style="text-decoration: none; margin-left: 0cm;" v-bind:to="{ name: 'AgregarVideojuego' }">
                   <v-btn color="transparent" depressed class="mt-3">
                     <v-icon>mdi-plus</v-icon>
                     <span>Agregar videojuego</span>
