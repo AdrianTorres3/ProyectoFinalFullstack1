@@ -9,6 +9,7 @@ import Registro from '@/components/Registro';
 import Login from '@/components/Login';
 import AgregarGenero from '@/components/AgregarGenero';
 import EliminarGenero from '@/components/EliminarGenero';
+import VideojuegosCategoria from '@/components/VideojuegosCategoria';
 
 Vue.use(Router);
 
@@ -39,6 +40,11 @@ export default new Router({
       path: '/videojuegos/:id',
       name: 'Videojuego',
       component: Videojuego,
+    },
+    {
+      path: '/videojuegos/categoria/:genero',
+      name: 'VideojuegosCategoria',
+      component: VideojuegosCategoria,
     },
     {
       path: '/generos/agregar',

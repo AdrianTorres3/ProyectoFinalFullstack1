@@ -61,6 +61,17 @@ module.exports.controller = (app) => {
         });
     })
 
+    app.get('/videojuegos/categoria/:genero', (req, res) => {
+        console.log(req.params.genero);
+        EsquemaVideojuego.find({"genero":req.params.genero}, 'titulo genero lanzamiento desarrollador precio plataformas descripcion')
+        .then((videojuego) => {
+            res.send(videojuego);
+        })
+        .catch((error)=>{
+            console.log(error);
+        });
+    })
+
     
 
    // Calififcar una pelicula

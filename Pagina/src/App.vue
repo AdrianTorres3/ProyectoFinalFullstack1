@@ -28,7 +28,7 @@
             <v-toolbar-items class="hidden-sm-and-down">
               <v-menu open-on-hover offset-y v-for="genero in generos" :key="genero._id">
                 <template v-slot:activator="{ on, attrs }">
-                  <v-btn color="transparent" depressed dark v-bind="attrs" v-on="on">
+                  <v-btn color="transparent" depressed dark v-bind="attrs" v-on="on" v-bind:to="`/videojuegos/categoria/${genero.nombre}`">
                     {{ genero.nombre }}
                   </v-btn>
                 </template>
@@ -159,7 +159,7 @@
                 <v-menu open-on-hover offset-y v-for="genero in generos" :key="genero._id">
 
                   <template v-slot:activator="{ on, attrs }">
-                    <v-btn color="transparent" depressed dark v-bind="attrs, genero._id" v-on="on">
+                    <v-btn color="transparent" depressed dark v-bind="attrs, genero._id" v-on="on" v-bind:to="`/videojuegos/categoria/${genero.nombre}`">
                       <span class="white--text">{{ genero.nombre }}</span>
                     </v-btn>
                   </template>
