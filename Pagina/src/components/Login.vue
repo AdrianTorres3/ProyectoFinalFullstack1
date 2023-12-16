@@ -2,7 +2,7 @@
   <v-container grid-list-xs>
 
     <v-form v-model="valido" ref="formulario" lazy-validation>
-      <v-text-field label="Nombre" v-model="nombre" ></v-text-field>
+      <v-text-field label="Nombre" v-model="nombre"></v-text-field>
       <v-text-field label="Contraseña" v-model="contrasenha" type="password" required></v-text-field>
       <v-btn @click="entrar" :disabled="!valido" class="purple lighten-2 white--text">Login</v-btn>
       <v-btn @click="limpar" class="purple darken-1 white--text">Limpiar</v-btn>
@@ -50,6 +50,7 @@ export default {
           window.localStorage.setItem('nombreUsuario', respuesta.data.nombre);
           this.$swal('Ma-ra-vi-llo-so!', 'Está listo para iniciar', 'success');
           this.$router.push({ name: 'Inicio' });
+          window.location.reload();
         })
         .catch((error) => {
           const mensaje = error.respuesta.data.mensaje;
@@ -60,6 +61,7 @@ export default {
     limpiar() {
       this.$refs.formulario.reset();
     },
+
   },
 };
 </script>

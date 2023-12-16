@@ -187,6 +187,7 @@ export default {
                     if (generoVideojuego == nombreGenero) {
                         this.dialogError = true
                         console.log('NO PUEDES')
+                        window.location.reload();
                         return
                     }
                 }
@@ -210,6 +211,7 @@ export default {
                     if (generoVideojuego == nombreGenero) {
                         this.dialogError = true
                         console.log('NO PUEDES')
+                        window.location.reload();
                         return
                     }
                 }

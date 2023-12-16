@@ -189,7 +189,7 @@ export default {
             this.dialogDelete = true
             axios.delete(`http://localhost:8081/videojuegos/${item._id}`)
                 .then(() => {
-
+                    window.location.reload();
 
                 })
                 .catch((error) => {
@@ -204,7 +204,7 @@ export default {
             axios.delete(`http://localhost:8081/videojuegos`)
                 .then(() => {
 
-
+                    window.location.reload();
                 })
                 .catch((error) => {
                     console.log(error);

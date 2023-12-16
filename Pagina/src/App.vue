@@ -71,7 +71,7 @@
                     <v-icon>mdi-plus</v-icon>
                     <span>Agregar videojuego</span>
                   </v-btn>
-                  <v-btn v-else disabled color="transparent" depressed class="mt-3">
+                  <v-btn v-else hidden color="transparent" depressed class="mt-3">
                     <v-icon>mdi-plus</v-icon>
                     <span>Agregar videojuego</span>
                   </v-btn>
@@ -83,7 +83,7 @@
                     <v-icon>mdi-plus</v-icon>
                     <span>Agregar género</span>
                   </v-btn>
-                  <v-btn v-else disabled color="transparent" depressed class="mt-3">
+                  <v-btn v-else hidden color="transparent" depressed class="mt-3">
                     <v-icon>mdi-plus</v-icon>
                     <span>Agregar género</span>
                   </v-btn>
@@ -125,7 +125,7 @@
                         <v-icon color="white">mdi-delete</v-icon>
                         <span class="white--text">Eliminar videojuegos</span>
                       </v-btn>
-                      <v-btn v-else disbaled color="transparent" depressed>
+                      <v-btn v-else hidden color="transparent" depressed>
                         <v-icon color="white">mdi-delete</v-icon>
                         <span class="white--text">Eliminar videojuegos</span>
                       </v-btn>
@@ -136,7 +136,7 @@
                         <v-icon color="white">mdi-delete</v-icon>
                         <span class="white--text">Eliminar géneros</span>
                       </v-btn>
-                      <v-btn v-else disabled color="transparent" depressed class="">
+                      <v-btn v-else hidden color="transparent" depressed class="">
                         <v-icon color="white">mdi-delete</v-icon>
                         <span class="white--text">Eliminar géneros</span>
                       </v-btn>
@@ -180,7 +180,7 @@
                     <v-icon color="white">mdi-plus</v-icon>
                     <span class="white--text">Agregar videojuego</span>
                   </v-btn>
-                  <v-btn v-else disabled color="transparent" depressed>
+                  <v-btn v-else hidden color="transparent" depressed>
                     <v-icon color="white">mdi-plus</v-icon>
                     <span class="white--text">Agregar videojuego</span>
                   </v-btn>
@@ -191,7 +191,7 @@
                     <v-icon color="white">mdi-plus</v-icon>
                     <span class="white--text">Agregar género</span>
                   </v-btn>
-                  <v-btn v-else diabled color="transparent" depressed class="mt-3">
+                  <v-btn v-else hidden color="transparent" depressed class="mt-3">
                     <v-icon color="white">mdi-plus</v-icon>
                     <span class="white--text">Agregar género</span>
                   </v-btn>
@@ -251,7 +251,7 @@
                     <v-icon color="white">mdi-delete</v-icon>
                     <span class="white--text">Eliminar videojuegos</span>
                   </v-btn>
-                  <v-btn v-else disabled color="transparent" depressed>
+                  <v-btn v-else hidden color="transparent" depressed>
                     <v-icon color="white">mdi-delete</v-icon>
                     <span class="white--text">Eliminar videojuegos</span>
                   </v-btn>
@@ -262,7 +262,7 @@
                     <v-icon color="white">mdi-delete</v-icon>
                     <span class="white--text">Eliminar géneros</span>
                   </v-btn>
-                  <v-btn v-else disabled color="transparent" depressed class="mt-3">
+                  <v-btn v-else hidden color="transparent" depressed class="mt-3">
                     <v-icon color="white">mdi-delete</v-icon>
                     <span class="white--text">Eliminar géneros</span>
                   </v-btn>
