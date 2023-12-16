@@ -116,7 +116,12 @@ module.exports.controller = (app) => {
         //     });
         // }
     });
-
+    app.post('/logout', function(req, res, next){
+        req.logout(function(err) {
+          if (err) { return next(err); }
+          res.redirect('/');
+        });
+      });
     app.get('/perfil',passport.authenticate('jwt',{
         session:false
     }), (req,res)=>{

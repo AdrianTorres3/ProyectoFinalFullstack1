@@ -11,6 +11,7 @@
       :rules="reglasPlataformas"></v-text-field>
     <v-text-field label="Descripción:" v-model="descripcion" multi-line required
       :rules="reglasDescripcion"></v-text-field>
+    <v-text-field label="Imagen:" v-model="imagen" multi-line></v-text-field>
     <v-btn @click="guardar" :disabled="!valido">Guardar</v-btn>
     <v-btn @click="limpiar">Limpiar</v-btn>
   </v-form>
@@ -31,6 +32,7 @@ export default {
     precio: '',
     plataformas: '',
     descripcion: '',
+    imagen: '',
     reglasTitulo: [
       v => !!v || 'El título es obligatorio',
     ],
@@ -80,6 +82,7 @@ export default {
             precio: this.precio,
             plataformas: this.plataformas,
             descripcion: this.descripcion,
+            imagen: this.imagen
           },
           url: 'http://localhost:8081/videojuegos',
           headers: {

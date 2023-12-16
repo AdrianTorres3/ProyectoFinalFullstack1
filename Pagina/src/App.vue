@@ -1,8 +1,8 @@
 <style>
 .imagenMenu {
-  width: 40%;
-  height: 40%;
-  margin-right: 0cm;
+  width: 20%;
+  height: 20%;
+
 }
 
 .tituloItems {
@@ -28,34 +28,38 @@
             <v-toolbar-items class="hidden-sm-and-down">
               <v-menu open-on-hover offset-y v-for="genero in generos" :key="genero._id">
                 <template v-slot:activator="{ on, attrs }">
-                  <v-btn color="transparent" depressed dark v-bind="attrs" v-on="on" v-bind:to="`/videojuegos/categoria/${genero.nombre}`" @click="reloadPage">
+                  <v-btn color="transparent" depressed dark v-bind="attrs" v-on="on"
+                    v-bind:to="`/videojuegos/categoria/${genero.nombre}`" @click="reloadPage">
                     {{ genero.nombre }}
                   </v-btn>
                 </template>
                 <v-list>
                   <v-list-item v-for="videojuego in videojuegos" v-if="videojuego.genero == genero.nombre"
-                    :key="videojuego._id" @click="reloadPage">
-                    <div class="mr-n16">
+                    :key="videojuego._id" @click="reloadPage" style="width: 600px;">
+
+                    <div class="mr-5 ">
+                      <router-link style="text-decoration: none; margin-left: 0cm;"
+                        v-bind:to="`/videojuegos/${videojuego._id}`">
+                        <v-list-item-title class="tituloItems text-left"> <span class="text-h6 blue--text"> {{
+                          videojuego.titulo }}</span></v-list-item-title>
+                      </router-link>
+                    </div>
+                    <div class="mr-6">
+                      <router-link style="text-decoration: none; color: black;"
+                        v-bind:to="`/videojuegos/${videojuego._id}`">
+                        <v-list-tile-content>
+                          {{ videojuego.genero }}
+                        </v-list-tile-content>
+                      </router-link>
+                    </div>
+                    <div class="mr-n12">
                       <router-link style="text-decoration: none; margin-left: 0cm;"
                         v-bind:to="`/videojuegos/${videojuego._id}`">
                         <v-list-tile-avatar>
-                          <img class="imagenMenu" src="https://cdn.vuetifyjs.com/images/john.png">
+                          <img class="imagenMenu" :src="videojuego.imagen">
                         </v-list-tile-avatar>
                       </router-link>
                     </div>
-                    <div class="ml-n16 mr-6">
-                      <router-link style="text-decoration: none; margin-left: 0cm;"
-                        v-bind:to="`/videojuegos/${videojuego._id}`">
-                        <v-list-item-title class="tituloItems">{{ videojuego.titulo }}</v-list-item-title>
-                      </router-link>
-                    </div>
-
-                    <router-link style="text-decoration: none; color: black;"
-                      v-bind:to="`/videojuegos/${videojuego._id}`">
-                      <v-list-tile-content>
-                        {{ videojuego.genero }}
-                      </v-list-tile-content>
-                    </router-link>
 
                   </v-list-item>
                 </v-list>
@@ -63,7 +67,11 @@
 
               <div>
                 <router-link style="text-decoration: none; margin-left: 0cm;" v-bind:to="{ name: 'AgregarVideojuego' }">
-                  <v-btn color="transparent" depressed class="mt-3">
+                  <v-btn v-if="usuario != null" color="transparent" depressed class="mt-3">
+                    <v-icon>mdi-plus</v-icon>
+                    <span>Agregar videojuego</span>
+                  </v-btn>
+                  <v-btn v-else disabled color="transparent" depressed class="mt-3">
                     <v-icon>mdi-plus</v-icon>
                     <span>Agregar videojuego</span>
                   </v-btn>
@@ -71,7 +79,11 @@
               </div>
               <div>
                 <router-link style="text-decoration: none; margin-left: 0cm;" v-bind:to="{ name: 'AgregarGenero' }">
-                  <v-btn color="transparent" depressed class="mt-3">
+                  <v-btn v-if="usuario != null" color="transparent" depressed class="mt-3">
+                    <v-icon>mdi-plus</v-icon>
+                    <span>Agregar género</span>
+                  </v-btn>
+                  <v-btn v-else disabled color="transparent" depressed class="mt-3">
                     <v-icon>mdi-plus</v-icon>
                     <span>Agregar género</span>
                   </v-btn>
@@ -82,11 +94,22 @@
                 <router-link style="text-decoration: none; margin-left: 0cm;" v-bind:to="{ name: 'Login' }">
                   <v-btn color="transparent" depressed class="mt-3">
                     <v-icon>mdi-account</v-icon>
-                    <span v-if="usuario!=null">{{usuario}}</span>
+                    <span v-if="usuario != null">{{ usuario }}</span>
                     <span v-else> iniciar sesión </span>
                   </v-btn>
                 </router-link>
               </div>
+              <!-- <div>
+
+                <v-btn color="transparent" depressed class="mt-3" v-if="usuario != null" @click="logout">
+                  <v-icon>mdi-logout</v-icon>
+                  <span>Cerrar sesión</span>
+                </v-btn>
+                <v-btn color="transparent" depressed class="mt-3" v-else hidden>
+
+                </v-btn>
+
+              </div> -->
               <div>
                 <v-menu offset-y open-on-click>
                   <template v-slot:activator="{ on, attrs }">
@@ -98,14 +121,22 @@
                   <v-list
                     style="background-image: url('https://www.bhmpics.com/downloads/gaming-wallpapers-/2.canva-purple-blue-neon-gaming-desktop-backgrounds-pwyzmwkptug.jpg');">
                     <router-link style="text-decoration: none;" v-bind:to="{ name: 'EliminarVideojuego' }">
-                      <v-btn color="transparent" depressed>
+                      <v-btn v-if="usuario != null" color="transparent" depressed>
+                        <v-icon color="white">mdi-delete</v-icon>
+                        <span class="white--text">Eliminar videojuegos</span>
+                      </v-btn>
+                      <v-btn v-else disbaled color="transparent" depressed>
                         <v-icon color="white">mdi-delete</v-icon>
                         <span class="white--text">Eliminar videojuegos</span>
                       </v-btn>
                     </router-link>
 
                     <router-link style="text-decoration: none; margin-left: 0cm;" v-bind:to="{ name: 'EliminarGenero' }">
-                      <v-btn color="transparent" depressed class="">
+                      <v-btn v-if="usuario != null" color="transparent" depressed class="">
+                        <v-icon color="white">mdi-delete</v-icon>
+                        <span class="white--text">Eliminar géneros</span>
+                      </v-btn>
+                      <v-btn v-else disabled color="transparent" depressed class="">
                         <v-icon color="white">mdi-delete</v-icon>
                         <span class="white--text">Eliminar géneros</span>
                       </v-btn>
@@ -133,7 +164,8 @@
                   <router-link style="text-decoration: none; margin-left: 0cm;" v-bind:to="{ name: 'Login' }">
                     <v-btn color="transparent" depressed class="mt-15 ml-n7">
                       <v-icon>mdi-account</v-icon>
-                      <span>iniciar sesion</span>
+                      <span v-if="usuario != null">{{ usuario }}</span>
+                      <span v-else> iniciar sesión </span>
                     </v-btn>
                   </router-link>
                 </div>
@@ -144,14 +176,22 @@
               <v-list
                 style="background-image: url('https://www.bhmpics.com/downloads/gaming-wallpapers-/2.canva-purple-blue-neon-gaming-desktop-backgrounds-pwyzmwkptug.jpg');">
                 <router-link style="text-decoration: none;" v-bind:to="{ name: 'AgregarVideojuego' }">
-                  <v-btn color="transparent" depressed>
+                  <v-btn v-if="usuario != null" color="transparent" depressed>
+                    <v-icon color="white">mdi-plus</v-icon>
+                    <span class="white--text">Agregar videojuego</span>
+                  </v-btn>
+                  <v-btn v-else disabled color="transparent" depressed>
                     <v-icon color="white">mdi-plus</v-icon>
                     <span class="white--text">Agregar videojuego</span>
                   </v-btn>
                 </router-link>
 
                 <router-link style="text-decoration: none; margin-left: 0cm;" v-bind:to="{ name: 'AgregarGenero' }">
-                  <v-btn color="transparent" depressed class="mt-3">
+                  <v-btn v-if="usuario != null" color="transparent" depressed class="mt-3">
+                    <v-icon color="white">mdi-plus</v-icon>
+                    <span class="white--text">Agregar género</span>
+                  </v-btn>
+                  <v-btn v-else diabled color="transparent" depressed class="mt-3">
                     <v-icon color="white">mdi-plus</v-icon>
                     <span class="white--text">Agregar género</span>
                   </v-btn>
@@ -160,7 +200,8 @@
                 <v-menu open-on-hover offset-y v-for="genero in generos" :key="genero._id">
 
                   <template v-slot:activator="{ on, attrs }">
-                    <v-btn color="transparent" depressed dark v-bind="attrs, genero._id" v-on="on" v-bind:to="`/videojuegos/categoria/${genero.nombre}`">
+                    <v-btn color="transparent" depressed dark v-bind="attrs, genero._id" v-on="on"
+                      v-bind:to="`/videojuegos/categoria/${genero.nombre}`">
                       <span class="white--text">{{ genero.nombre }}</span>
                     </v-btn>
                   </template>
@@ -171,21 +212,22 @@
                         <router-link style="text-decoration: none; margin-left: 0cm;"
                           v-bind:to="`/videojuegos/${videojuego._id}`">
                           <v-list-tile-avatar>
-                            <img class="imagenMenu" src="https://cdn.vuetifyjs.com/images/john.png">
+                            <img class="imagenMenu" :src="videojuego.imagen">
                           </v-list-tile-avatar>
                         </router-link>
                       </div>
                       <div class="ml-n16 mr-6">
                         <router-link style="text-decoration: none; margin-left: 0cm;"
                           v-bind:to="`/videojuegos/${videojuego._id}`">
-                          <v-list-item-title class="tituloItems">{{ videojuego.titulo }}</v-list-item-title>
+                          <v-list-item-title class="tituloItems text-left"> <span class="text-h6 blue--text"> {{
+                            videojuego.titulo }}</span></v-list-item-title>
                         </router-link>
                       </div>
 
                       <router-link style="text-decoration: none; color: black;"
                         v-bind:to="`/videojuegos/${videojuego._id}`">
                         <v-list-tile-content>
-                          {{videojuego.genero}}
+                          {{ videojuego.genero }}
                         </v-list-tile-content>
                       </router-link>
 
@@ -196,31 +238,39 @@
               </v-list>
             </v-menu>
             <v-menu offset-y open-on-click>
-                  <template v-slot:activator="{ on, attrs }">
-                    <v-btn color="transparent" depressed class="mt-3 ml-n6" v-on="on" v-bind="attrs">
-                      <v-icon>mdi-dots-vertical</v-icon>
+              <template v-slot:activator="{ on, attrs }">
+                <v-btn color="transparent" depressed class="mt-3 ml-n6" v-on="on" v-bind="attrs">
+                  <v-icon>mdi-dots-vertical</v-icon>
 
-                    </v-btn>
-                  </template>
-                  <v-list
-                    style="background-image: url('https://www.bhmpics.com/downloads/gaming-wallpapers-/2.canva-purple-blue-neon-gaming-desktop-backgrounds-pwyzmwkptug.jpg');">
-                    <router-link style="text-decoration: none;" v-bind:to="{ name: 'EliminarVideojuego' }">
-                      <v-btn color="transparent" depressed>
-                        <v-icon color="white">mdi-delete</v-icon>
-                        <span class="white--text">Eliminar videojuegos</span>
-                      </v-btn>
-                    </router-link>
+                </v-btn>
+              </template>
+              <v-list
+                style="background-image: url('https://www.bhmpics.com/downloads/gaming-wallpapers-/2.canva-purple-blue-neon-gaming-desktop-backgrounds-pwyzmwkptug.jpg');">
+                <router-link style="text-decoration: none;" v-bind:to="{ name: 'EliminarVideojuego' }">
+                  <v-btn v-if="usuario != null" color="transparent" depressed>
+                    <v-icon color="white">mdi-delete</v-icon>
+                    <span class="white--text">Eliminar videojuegos</span>
+                  </v-btn>
+                  <v-btn v-else disabled color="transparent" depressed>
+                    <v-icon color="white">mdi-delete</v-icon>
+                    <span class="white--text">Eliminar videojuegos</span>
+                  </v-btn>
+                </router-link>
 
-                    <router-link style="text-decoration: none; margin-left: 0cm;" v-bind:to="{ name: 'EliminarGenero' }">
-                      <v-btn color="transparent" depressed class="mt-3">
-                        <v-icon color="white">mdi-delete</v-icon>
-                        <span class="white--text">Eliminar géneros</span>
-                      </v-btn>
-                    </router-link>
+                <router-link style="text-decoration: none; margin-left: 0cm;" v-bind:to="{ name: 'EliminarGenero' }">
+                  <v-btn v-if="usuario != null" color="transparent" depressed class="mt-3">
+                    <v-icon color="white">mdi-delete</v-icon>
+                    <span class="white--text">Eliminar géneros</span>
+                  </v-btn>
+                  <v-btn v-else disabled color="transparent" depressed class="mt-3">
+                    <v-icon color="white">mdi-delete</v-icon>
+                    <span class="white--text">Eliminar géneros</span>
+                  </v-btn>
+                </router-link>
 
 
-                  </v-list>
-                </v-menu>
+              </v-list>
+            </v-menu>
           </v-toolbar-items>
 
         </v-toolbar>
@@ -284,7 +334,7 @@ const refreshPage = () => {
 };
 export default {
   name: 'App',
-  
+
   data() {
     return {
       usuario: window.localStorage.getItem('nombreUsuario'),
@@ -320,6 +370,10 @@ export default {
   methods: {
     reloadPage() {
       window.location.reload();
+    },
+    logout() {
+      axios.post('http://localhost:8081/logout')
+
     }
   }
 }

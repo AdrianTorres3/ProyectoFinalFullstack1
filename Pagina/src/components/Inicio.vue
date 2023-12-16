@@ -39,7 +39,7 @@
           <v-hover v-slot:default="{ hover }">
             <v-card class="mx-auto" color="grey lighten-4" v-bind:to="`/videojuegos/${videojuego._id}`">
               <v-img :aspect-ratio="4 / 5"
-                src="https://sm.ign.com/ign_es/screenshot/default/skyrim-logo-6553-6831-hd-wallpapers_qq83.jpg">
+              :src="videojuego.imagen">
                 <v-expand-transition>
                   <div v-if="hover"
                     class="d-flex transition-fast-in-fast-out blue darken-2 v-card--reveal display-3 white--text"
@@ -70,7 +70,7 @@
           <v-hover v-slot:default="{ hover }">
             <v-card class="mx-auto" color="grey lighten-4" v-bind:to="`/videojuegos/${videojuego._id}`">
               <v-img :aspect-ratio="4 / 5"
-                src="https://sm.ign.com/ign_es/screenshot/default/skyrim-logo-6553-6831-hd-wallpapers_qq83.jpg">
+              :src="videojuego.imagen">
                 <v-expand-transition>
                   <div v-if="hover"
                     class="d-flex transition-fast-in-fast-out blue darken-2 v-card--reveal display-3 white--text"
@@ -101,7 +101,7 @@
           <v-hover v-slot:default="{ hover }">
             <v-card class="mx-auto" color="grey lighten-4" v-bind:to="`/videojuegos/${videojuego._id}`">
               <v-img :aspect-ratio="4 / 5"
-                src="https://sm.ign.com/ign_es/screenshot/default/skyrim-logo-6553-6831-hd-wallpapers_qq83.jpg">
+              :src="videojuego.imagen">
                 <v-expand-transition>
                   <div v-if="hover"
                     class="d-flex transition-fast-in-fast-out blue darken-2 v-card--reveal display-3 white--text"

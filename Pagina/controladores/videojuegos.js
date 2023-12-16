@@ -14,6 +14,7 @@ module.exports.controller = (app) => {
             precio: req.body.precio,
             plataformas: req.body.plataformas,
             descripcion: req.body.descripcion,
+            imagen: req.body.imagen
         });
 
         nuevoVideojuego.save()
@@ -27,7 +28,7 @@ module.exports.controller = (app) => {
 
     // Obtener todos los videojuegos
     app.get('/videojuegos', (req, res) => {
-        EsquemaVideojuego.find({}, 'titulo genero lanzamiento desarrollador precio plataformas descripcion')
+        EsquemaVideojuego.find({}, 'titulo genero lanzamiento desarrollador precio plataformas descripcion imagen')
         .then((videojuegos) => {
              res.send(videojuegos);
              console.log(videojuegos);
@@ -39,7 +40,7 @@ module.exports.controller = (app) => {
     // Obtener un videojuego por id
     app.get('/videojuegos/:id', (req, res) => {
         
-        EsquemaVideojuego.findById(req.params.id, 'titulo genero lanzamiento desarrollador precio plataformas descripcion')
+        EsquemaVideojuego.findById(req.params.id, 'titulo genero lanzamiento desarrollador precio plataformas descripcion imagen')
         .then((videojuego) => {
             res.send(videojuego);
             console.log(videojuego);
@@ -52,7 +53,7 @@ module.exports.controller = (app) => {
     // Obtener un videojuego por genero
     app.get('/videojuegos/genero/:genero', (req, res) => {
         console.log(req.params.genero);
-        EsquemaVideojuego.find({"genero":req.params.genero}, 'titulo genero lanzamiento desarrollador precio plataformas descripcion')
+        EsquemaVideojuego.find({"genero":req.params.genero}, 'titulo genero lanzamiento desarrollador precio plataformas descripcion imagen')
         .then((videojuego) => {
             res.send(videojuego);
         })
@@ -63,7 +64,7 @@ module.exports.controller = (app) => {
 
     app.get('/videojuegos/categoria/:genero', (req, res) => {
         console.log(req.params.genero);
-        EsquemaVideojuego.find({"genero":req.params.genero}, 'titulo genero lanzamiento desarrollador precio plataformas descripcion')
+        EsquemaVideojuego.find({"genero":req.params.genero}, 'titulo genero lanzamiento desarrollador precio plataformas descripcion imagen')
         .then((videojuego) => {
             res.send(videojuego);
         })
@@ -74,25 +75,7 @@ module.exports.controller = (app) => {
 
     
 
-   // Calififcar una pelicula
-    app.post('/peliculas/calif/:id', (req, res) => {
-        const calificacion = new Rating({
-            pelicula_id: req.params.id,
-            user_id: req.body.user_id,
-            calif: requ.body.calif,
-        });
-
-        calificacion.save(function (error, calif) {
-            if (error) {
-                console.log(error);
-            }
-            res.send({
-                pelicula_id: calificacion.pelicula_id,
-                user_id: calificacion.user_id,
-                calif: calificacion.calif,
-            });
-        });
-    });
+   
 
     // Eliminar un videojuego por su id
     app.delete('/videojuegos/:id', (req, res) => {

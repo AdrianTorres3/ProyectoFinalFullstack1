@@ -27,8 +27,7 @@
                 <v-col v-for="videojuego in videojuegos" :key="videojuego._id">
                     <v-hover v-slot:default="{ hover }">
                         <v-card class="mx-auto" color="grey lighten-4" v-bind:to="`/videojuegos/${videojuego._id}`">
-                            <v-img :aspect-ratio="4 / 5"
-                                src="https://sm.ign.com/ign_es/screenshot/default/skyrim-logo-6553-6831-hd-wallpapers_qq83.jpg">
+                            <v-img :aspect-ratio="4 / 5" :src="videojuego.imagen">
                                 <v-expand-transition>
                                     <div v-if="hover"
                                         class="d-flex transition-fast-in-fast-out blue darken-2 v-card--reveal display-3 white--text"
@@ -97,27 +96,7 @@ export default {
 
                 });
         },
-        async eliminarPelicula(_id) {
-            return axios({
-                method: 'delete',
-                url: `http://localhost:8081/peliculas/${_id}`,
-            })
-                .then(() => {
-                    this.obtenerPeliculas();
-                })
-                .catch(() => {
 
-                });
-        },
-        async eliminarPeliculas() {
-            return axios({
-                method: 'delete',
-                url: 'http://localhost:8081/peliculas',
-            })
-                .then(() => {
-                    this.obtenerPeliculas();
-                });
-        },
     },
 };
 </script>

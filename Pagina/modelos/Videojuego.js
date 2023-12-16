@@ -8,8 +8,8 @@ const videojuegoSchema = new Schema({
     desarrollador:String,
     precio:String,
     plataformas:String,
-    descripcion:String
-
+    descripcion:String,
+    imagen:String
 
 });
 
