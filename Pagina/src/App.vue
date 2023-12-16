@@ -28,7 +28,7 @@
             <v-toolbar-items class="hidden-sm-and-down">
               <v-menu open-on-hover offset-y v-for="genero in generos" :key="genero._id">
                 <template v-slot:activator="{ on, attrs }">
-                  <v-btn color="transparent" depressed dark v-bind="attrs" v-on="on" v-bind:to="`/videojuegos/categoria/${genero.nombre}`">
+                  <v-btn color="transparent" depressed dark v-bind="attrs" v-on="on" v-bind:to="`/videojuegos/categoria/${genero.nombre}`" @click="reloadPage">
                     {{ genero.nombre }}
                   </v-btn>
                 </template>
@@ -104,7 +104,7 @@
                     </router-link>
 
                     <router-link style="text-decoration: none; margin-left: 0cm;" v-bind:to="{ name: 'EliminarGenero' }">
-                      <v-btn color="transparent" depressed class="mt-3">
+                      <v-btn color="transparent" depressed class="">
                         <v-icon color="white">mdi-delete</v-icon>
                         <span class="white--text">Eliminar géneros</span>
                       </v-btn>
