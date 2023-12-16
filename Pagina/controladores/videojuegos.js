@@ -38,25 +38,26 @@ module.exports.controller = (app) => {
 
     // Obtener un videojuego por id
     app.get('/videojuegos/:id', (req, res) => {
+        
         EsquemaVideojuego.findById(req.params.id, 'titulo genero lanzamiento desarrollador precio plataformas descripcion')
-        .then((error, videojuego) => {
-            if (error) {
-                console.error(error);
-            } else {
-                res.send(videojuego);
-            }
+        .then((videojuego) => {
+            res.send(videojuego);
+            console.log(videojuego);
+        })
+        .catch((error)=>{
+            console.log(error);
         });
     })
 
     // Obtener un videojuego por genero
-    app.get('/videojuegos/:genero', (req, res) => {
-        EsquemaVideojuego.find(req.params.genero, 'titulo genero lanzamiento desarrollador precio plataformas descripcion')
-        .then((error, videojuego) => {
-            if (error) {
-                console.error(error);
-            } else {
-                res.send(videojuego);
-            }
+    app.get('/videojuegos/genero/:genero', (req, res) => {
+        console.log(req.params.genero);
+        EsquemaVideojuego.find({"genero":req.params.genero}, 'titulo genero lanzamiento desarrollador precio plataformas descripcion')
+        .then((videojuego) => {
+            res.send(videojuego);
+        })
+        .catch((error)=>{
+            console.log(error);
         });
     })
 
@@ -82,10 +83,10 @@ module.exports.controller = (app) => {
         });
     });
 
-    // Eliminar una película por su id
-    app.delete('/peliculas/:id', (req, res) => {
-        EsquemaPelicula.deleteOne({_id: req.params.id})
-        .then((error, pelicula) => {
+    // Eliminar un videojuego por su id
+    app.delete('/videojuegos/:id', (req, res) => {
+        EsquemaVideojuego.deleteOne({_id: req.params.id})
+        .then((error, videojuego) => {
             if(error) {
                 console.error(error);
                 res.send(error);
@@ -95,9 +96,9 @@ module.exports.controller = (app) => {
         });
     });
 
-    // Borrar todas las películas
-    app.delete('/peliculas', (req, res) => {
-        EsquemaPelicula.deleteMany({})
+    // Borrar todos los videojuegos
+    app.delete('/videojuegos', (req, res) => {
+        EsquemaVideojuego.deleteMany({})
         .then((error) => {
             if(error) {
                 console.error(error);
@@ -107,4 +108,5 @@ module.exports.controller = (app) => {
             }
         });
     });
+    
 };

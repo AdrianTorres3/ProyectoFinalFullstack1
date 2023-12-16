@@ -26,516 +26,41 @@
             </router-link>
             <v-spacer></v-spacer>
             <v-toolbar-items class="hidden-sm-and-down">
-              <v-menu open-on-hover offset-y>
+              <v-menu open-on-hover offset-y v-for="genero in generos" :key="genero._id">
                 <template v-slot:activator="{ on, attrs }">
                   <v-btn color="transparent" depressed dark v-bind="attrs" v-on="on">
-                    ARPG
+                    {{ genero.nombre }}
                   </v-btn>
                 </template>
                 <v-list>
-                  <v-list-item v-for="(item, index) in items" :key="index">
+                  <v-list-item v-for="videojuego in videojuegos" v-if="videojuego.genero == genero.nombre"
+                    :key="videojuego._id" @click="reloadPage">
                     <div class="mr-n16">
-                      <router-link style="text-decoration: none; margin-left: 0cm;" v-bind:to="{ name: 'Pelicula' }">
+                      <router-link style="text-decoration: none; margin-left: 0cm;"
+                        v-bind:to="`/videojuegos/${videojuego._id}`">
                         <v-list-tile-avatar>
                           <img class="imagenMenu" src="https://cdn.vuetifyjs.com/images/john.png">
                         </v-list-tile-avatar>
                       </router-link>
                     </div>
                     <div class="ml-n16 mr-6">
-                      <router-link style="text-decoration: none; margin-left: 0cm;" v-bind:to="{ name: 'Pelicula' }">
-                        <v-list-item-title class="tituloItems">{{ item.title }}</v-list-item-title>
+                      <router-link style="text-decoration: none; margin-left: 0cm;"
+                        v-bind:to="`/videojuegos/${videojuego._id}`">
+                        <v-list-item-title class="tituloItems">{{ videojuego.titulo }}</v-list-item-title>
                       </router-link>
                     </div>
 
-                    <router-link style="text-decoration: none; color: black;" v-bind:to="{ name: 'Pelicula' }">
+                    <router-link style="text-decoration: none; color: black;"
+                      v-bind:to="`/videojuegos/${videojuego._id}`">
                       <v-list-tile-content>
-                        hodsadlalsdlsaldsa
+                        {{ videojuego.genero }}
                       </v-list-tile-content>
                     </router-link>
 
                   </v-list-item>
                 </v-list>
               </v-menu>
-              <v-menu open-on-hover offset-y>
-                <template v-slot:activator="{ on, attrs }">
-                  <v-btn color="transparent" depressed dark v-bind="attrs" v-on="on">
-                    Mundo abierto
-                  </v-btn>
-                </template>
-                <v-list>
-                  <v-list-item v-for="(item, index) in items" :key="index">
-                    <div class="mr-n16">
-                      <router-link style="text-decoration: none; margin-left: 0cm;" v-bind:to="{ name: 'Pelicula' }">
-                        <v-list-tile-avatar>
-                          <img class="imagenMenu" src="https://cdn.vuetifyjs.com/images/john.png">
-                        </v-list-tile-avatar>
-                      </router-link>
-                    </div>
-                    <div class="ml-n16 mr-6">
-                      <router-link style="text-decoration: none; margin-left: 0cm;" v-bind:to="{ name: 'Pelicula' }">
-                        <v-list-item-title class="tituloItems">{{ item.title }}</v-list-item-title>
-                      </router-link>
-                    </div>
-                    <v-spacer></v-spacer>
-                    <router-link style="text-decoration: none; color: black;" v-bind:to="{ name: 'Pelicula' }">
-                      <v-list-tile-content>
-                        hodsadlalsdlsaldsa
-                      </v-list-tile-content>
-                    </router-link>
 
-                  </v-list-item>
-                </v-list>
-              </v-menu>
-              <v-menu open-on-hover offset-y>
-                <template v-slot:activator="{ on, attrs }">
-                  <v-btn color="transparent" depressed dark v-bind="attrs" v-on="on">
-                    SandBox
-                  </v-btn>
-                </template>
-                <v-list>
-                  <v-list-item v-for="(item, index) in items" :key="index">
-                    <div class="mr-n16">
-                      <router-link style="text-decoration: none; margin-left: 0cm;" v-bind:to="{ name: 'Pelicula' }">
-                        <v-list-tile-avatar>
-                          <img class="imagenMenu" src="https://cdn.vuetifyjs.com/images/john.png">
-                        </v-list-tile-avatar>
-                      </router-link>
-                    </div>
-                    <div class="ml-n16 mr-6">
-                      <router-link style="text-decoration: none; margin-left: 0cm;" v-bind:to="{ name: 'Pelicula' }">
-                        <v-list-item-title class="tituloItems">{{ item.title }}</v-list-item-title>
-                      </router-link>
-                    </div>
-                    <v-spacer></v-spacer>
-                    <router-link style="text-decoration: none; color: black;" v-bind:to="{ name: 'Pelicula' }">
-                      <v-list-tile-content>
-                        hodsadlalsdlsaldsa
-                      </v-list-tile-content>
-                    </router-link>
-
-                  </v-list-item>
-                </v-list>
-              </v-menu>
-              <v-menu open-on-hover offset-y>
-                <template v-slot:activator="{ on, attrs }">
-                  <v-btn color="transparent" depressed dark v-bind="attrs" v-on="on">
-                    Deportes
-                  </v-btn>
-                </template>
-                <v-list>
-                  <v-list-item v-for="(item, index) in items" :key="index">
-                    <div class="mr-n16">
-                      <router-link style="text-decoration: none; margin-left: 0cm;" v-bind:to="{ name: 'Pelicula' }">
-                        <v-list-tile-avatar>
-                          <img class="imagenMenu" src="https://cdn.vuetifyjs.com/images/john.png">
-                        </v-list-tile-avatar>
-                      </router-link>
-                    </div>
-                    <div class="ml-n16 mr-6">
-                      <router-link style="text-decoration: none; margin-left: 0cm;" v-bind:to="{ name: 'Pelicula' }">
-                        <v-list-item-title class="tituloItems">{{ item.title }}</v-list-item-title>
-                      </router-link>
-                    </div>
-                    <v-spacer></v-spacer>
-                    <router-link style="text-decoration: none; color: black;" v-bind:to="{ name: 'Pelicula' }">
-                      <v-list-tile-content>
-                        hodsadlalsdlsaldsa
-                      </v-list-tile-content>
-                    </router-link>
-
-                  </v-list-item>
-                </v-list>
-              </v-menu>
-              <v-menu open-on-hover offset-y>
-                <template v-slot:activator="{ on, attrs }">
-                  <v-btn color="transparent" depressed dark v-bind="attrs" v-on="on">
-                    Peleas
-                  </v-btn>
-                </template>
-                <v-list>
-                  <v-list-item v-for="(item, index) in items" :key="index">
-                    <div class="mr-n16">
-                      <router-link style="text-decoration: none; margin-left: 0cm;" v-bind:to="{ name: 'Pelicula' }">
-                        <v-list-tile-avatar>
-                          <img class="imagenMenu" src="https://cdn.vuetifyjs.com/images/john.png">
-                        </v-list-tile-avatar>
-                      </router-link>
-                    </div>
-                    <div class="ml-n16 mr-6">
-                      <router-link style="text-decoration: none; margin-left: 0cm;" v-bind:to="{ name: 'Pelicula' }">
-                        <v-list-item-title class="tituloItems">{{ item.title }}</v-list-item-title>
-                      </router-link>
-                    </div>
-                    <v-spacer></v-spacer>
-                    <router-link style="text-decoration: none; color: black;" v-bind:to="{ name: 'Pelicula' }">
-                      <v-list-tile-content>
-                        hodsadlalsdlsaldsa
-                      </v-list-tile-content>
-                    </router-link>
-
-                  </v-list-item>
-                </v-list>
-              </v-menu>
-              <v-menu open-on-hover offset-y>
-                <template v-slot:activator="{ on, attrs }">
-                  <v-btn color="transparent" depressed dark v-bind="attrs" v-on="on">
-                    Peleas
-                  </v-btn>
-                </template>
-                <v-list>
-                  <v-list-item v-for="(item, index) in items" :key="index">
-                    <div class="mr-n16">
-                      <router-link style="text-decoration: none; margin-left: 0cm;" v-bind:to="{ name: 'Pelicula' }">
-                        <v-list-tile-avatar>
-                          <img class="imagenMenu" src="https://cdn.vuetifyjs.com/images/john.png">
-                        </v-list-tile-avatar>
-                      </router-link>
-                    </div>
-                    <div class="ml-n16 mr-6">
-                      <router-link style="text-decoration: none; margin-left: 0cm;" v-bind:to="{ name: 'Pelicula' }">
-                        <v-list-item-title class="tituloItems">{{ item.title }}</v-list-item-title>
-                      </router-link>
-                    </div>
-                    <v-spacer></v-spacer>
-                    <router-link style="text-decoration: none; color: black;" v-bind:to="{ name: 'Pelicula' }">
-                      <v-list-tile-content>
-                        hodsadlalsdlsaldsa
-                      </v-list-tile-content>
-                    </router-link>
-
-                  </v-list-item>
-                </v-list>
-              </v-menu>
-              <v-menu open-on-hover offset-y>
-                <template v-slot:activator="{ on, attrs }">
-                  <v-btn color="transparent" depressed dark v-bind="attrs" v-on="on">
-                    Peleas
-                  </v-btn>
-                </template>
-                <v-list>
-                  <v-list-item v-for="(item, index) in items" :key="index">
-                    <div class="mr-n16">
-                      <router-link style="text-decoration: none; margin-left: 0cm;" v-bind:to="{ name: 'Pelicula' }">
-                        <v-list-tile-avatar>
-                          <img class="imagenMenu" src="https://cdn.vuetifyjs.com/images/john.png">
-                        </v-list-tile-avatar>
-                      </router-link>
-                    </div>
-                    <div class="ml-n16 mr-6">
-                      <router-link style="text-decoration: none; margin-left: 0cm;" v-bind:to="{ name: 'Pelicula' }">
-                        <v-list-item-title class="tituloItems">{{ item.title }}</v-list-item-title>
-                      </router-link>
-                    </div>
-                    <v-spacer></v-spacer>
-                    <router-link style="text-decoration: none; color: black;" v-bind:to="{ name: 'Pelicula' }">
-                      <v-list-tile-content>
-                        hodsadlalsdlsaldsa
-                      </v-list-tile-content>
-                    </router-link>
-
-                  </v-list-item>
-                </v-list>
-              </v-menu>
-              <v-menu open-on-hover offset-y>
-                <template v-slot:activator="{ on, attrs }">
-                  <v-btn color="transparent" depressed dark v-bind="attrs" v-on="on">
-                    Peleas
-                  </v-btn>
-                </template>
-                <v-list>
-                  <v-list-item v-for="(item, index) in items" :key="index">
-                    <div class="mr-n16">
-                      <router-link style="text-decoration: none; margin-left: 0cm;" v-bind:to="{ name: 'Pelicula' }">
-                        <v-list-tile-avatar>
-                          <img class="imagenMenu" src="https://cdn.vuetifyjs.com/images/john.png">
-                        </v-list-tile-avatar>
-                      </router-link>
-                    </div>
-                    <div class="ml-n16 mr-6">
-                      <router-link style="text-decoration: none; margin-left: 0cm;" v-bind:to="{ name: 'Pelicula' }">
-                        <v-list-item-title class="tituloItems">{{ item.title }}</v-list-item-title>
-                      </router-link>
-                    </div>
-                    <v-spacer></v-spacer>
-                    <router-link style="text-decoration: none; color: black;" v-bind:to="{ name: 'Pelicula' }">
-                      <v-list-tile-content>
-                        hodsadlalsdlsaldsa
-                      </v-list-tile-content>
-                    </router-link>
-
-                  </v-list-item>
-                </v-list>
-              </v-menu>
-              <v-menu open-on-hover offset-y>
-                <template v-slot:activator="{ on, attrs }">
-                  <v-btn color="transparent" depressed dark v-bind="attrs" v-on="on">
-                    Peleas
-                  </v-btn>
-                </template>
-                <v-list>
-                  <v-list-item v-for="(item, index) in items" :key="index">
-                    <div class="mr-n16">
-                      <router-link style="text-decoration: none; margin-left: 0cm;" v-bind:to="{ name: 'Pelicula' }">
-                        <v-list-tile-avatar>
-                          <img class="imagenMenu" src="https://cdn.vuetifyjs.com/images/john.png">
-                        </v-list-tile-avatar>
-                      </router-link>
-                    </div>
-                    <div class="ml-n16 mr-6">
-                      <router-link style="text-decoration: none; margin-left: 0cm;" v-bind:to="{ name: 'Pelicula' }">
-                        <v-list-item-title class="tituloItems">{{ item.title }}</v-list-item-title>
-                      </router-link>
-                    </div>
-                    <v-spacer></v-spacer>
-                    <router-link style="text-decoration: none; color: black;" v-bind:to="{ name: 'Pelicula' }">
-                      <v-list-tile-content>
-                        hodsadlalsdlsaldsa
-                      </v-list-tile-content>
-                    </router-link>
-
-                  </v-list-item>
-                </v-list>
-              </v-menu>
-              <v-menu open-on-hover offset-y>
-                <template v-slot:activator="{ on, attrs }">
-                  <v-btn color="transparent" depressed dark v-bind="attrs" v-on="on">
-                    Peleas
-                  </v-btn>
-                </template>
-                <v-list>
-                  <v-list-item v-for="(item, index) in items" :key="index">
-                    <div class="mr-n16">
-                      <router-link style="text-decoration: none; margin-left: 0cm;" v-bind:to="{ name: 'Pelicula' }">
-                        <v-list-tile-avatar>
-                          <img class="imagenMenu" src="https://cdn.vuetifyjs.com/images/john.png">
-                        </v-list-tile-avatar>
-                      </router-link>
-                    </div>
-                    <div class="ml-n16 mr-6">
-                      <router-link style="text-decoration: none; margin-left: 0cm;" v-bind:to="{ name: 'Pelicula' }">
-                        <v-list-item-title class="tituloItems">{{ item.title }}</v-list-item-title>
-                      </router-link>
-                    </div>
-                    <v-spacer></v-spacer>
-                    <router-link style="text-decoration: none; color: black;" v-bind:to="{ name: 'Pelicula' }">
-                      <v-list-tile-content>
-                        hodsadlalsdlsaldsa
-                      </v-list-tile-content>
-                    </router-link>
-
-                  </v-list-item>
-                </v-list>
-              </v-menu>
-              <v-menu open-on-hover offset-y>
-                <template v-slot:activator="{ on, attrs }">
-                  <v-btn color="transparent" depressed dark v-bind="attrs" v-on="on">
-                    Peleas
-                  </v-btn>
-                </template>
-                <v-list>
-                  <v-list-item v-for="(item, index) in items" :key="index">
-                    <div class="mr-n16">
-                      <router-link style="text-decoration: none; margin-left: 0cm;" v-bind:to="{ name: 'Pelicula' }">
-                        <v-list-tile-avatar>
-                          <img class="imagenMenu" src="https://cdn.vuetifyjs.com/images/john.png">
-                        </v-list-tile-avatar>
-                      </router-link>
-                    </div>
-                    <div class="ml-n16 mr-6">
-                      <router-link style="text-decoration: none; margin-left: 0cm;" v-bind:to="{ name: 'Pelicula' }">
-                        <v-list-item-title class="tituloItems">{{ item.title }}</v-list-item-title>
-                      </router-link>
-                    </div>
-                    <v-spacer></v-spacer>
-                    <router-link style="text-decoration: none; color: black;" v-bind:to="{ name: 'Pelicula' }">
-                      <v-list-tile-content>
-                        hodsadlalsdlsaldsa
-                      </v-list-tile-content>
-                    </router-link>
-
-                  </v-list-item>
-                </v-list>
-              </v-menu>
-              <v-menu open-on-hover offset-y>
-                <template v-slot:activator="{ on, attrs }">
-                  <v-btn color="transparent" depressed dark v-bind="attrs" v-on="on">
-                    Peleas
-                  </v-btn>
-                </template>
-                <v-list>
-                  <v-list-item v-for="(item, index) in items" :key="index">
-                    <div class="mr-n16">
-                      <router-link style="text-decoration: none; margin-left: 0cm;" v-bind:to="{ name: 'Pelicula' }">
-                        <v-list-tile-avatar>
-                          <img class="imagenMenu" src="https://cdn.vuetifyjs.com/images/john.png">
-                        </v-list-tile-avatar>
-                      </router-link>
-                    </div>
-                    <div class="ml-n16 mr-6">
-                      <router-link style="text-decoration: none; margin-left: 0cm;" v-bind:to="{ name: 'Pelicula' }">
-                        <v-list-item-title class="tituloItems">{{ item.title }}</v-list-item-title>
-                      </router-link>
-                    </div>
-                    <v-spacer></v-spacer>
-                    <router-link style="text-decoration: none; color: black;" v-bind:to="{ name: 'Pelicula' }">
-                      <v-list-tile-content>
-                        hodsadlalsdlsaldsa
-                      </v-list-tile-content>
-                    </router-link>
-
-                  </v-list-item>
-                </v-list>
-              </v-menu>
-              <v-menu open-on-hover offset-y>
-                <template v-slot:activator="{ on, attrs }">
-                  <v-btn color="transparent" depressed dark v-bind="attrs" v-on="on">
-                    Peleas
-                  </v-btn>
-                </template>
-                <v-list>
-                  <v-list-item v-for="(item, index) in items" :key="index">
-                    <div class="mr-n16">
-                      <router-link style="text-decoration: none; margin-left: 0cm;" v-bind:to="{ name: 'Pelicula' }">
-                        <v-list-tile-avatar>
-                          <img class="imagenMenu" src="https://cdn.vuetifyjs.com/images/john.png">
-                        </v-list-tile-avatar>
-                      </router-link>
-                    </div>
-                    <div class="ml-n16 mr-6">
-                      <router-link style="text-decoration: none; margin-left: 0cm;" v-bind:to="{ name: 'Pelicula' }">
-                        <v-list-item-title class="tituloItems">{{ item.title }}</v-list-item-title>
-                      </router-link>
-                    </div>
-                    <v-spacer></v-spacer>
-                    <router-link style="text-decoration: none; color: black;" v-bind:to="{ name: 'Pelicula' }">
-                      <v-list-tile-content>
-                        hodsadlalsdlsaldsa
-                      </v-list-tile-content>
-                    </router-link>
-
-                  </v-list-item>
-                </v-list>
-              </v-menu>
-              <v-menu open-on-hover offset-y>
-                <template v-slot:activator="{ on, attrs }">
-                  <v-btn color="transparent" depressed dark v-bind="attrs" v-on="on">
-                    Peleas
-                  </v-btn>
-                </template>
-                <v-list>
-                  <v-list-item v-for="(item, index) in items" :key="index">
-                    <div class="mr-n16">
-                      <router-link style="text-decoration: none; margin-left: 0cm;" v-bind:to="{ name: 'Pelicula' }">
-                        <v-list-tile-avatar>
-                          <img class="imagenMenu" src="https://cdn.vuetifyjs.com/images/john.png">
-                        </v-list-tile-avatar>
-                      </router-link>
-                    </div>
-                    <div class="ml-n16 mr-6">
-                      <router-link style="text-decoration: none; margin-left: 0cm;" v-bind:to="{ name: 'Pelicula' }">
-                        <v-list-item-title class="tituloItems">{{ item.title }}</v-list-item-title>
-                      </router-link>
-                    </div>
-                    <v-spacer></v-spacer>
-                    <router-link style="text-decoration: none; color: black;" v-bind:to="{ name: 'Pelicula' }">
-                      <v-list-tile-content>
-                        hodsadlalsdlsaldsa
-                      </v-list-tile-content>
-                    </router-link>
-
-                  </v-list-item>
-                </v-list>
-              </v-menu>
-              <v-menu open-on-hover offset-y>
-                <template v-slot:activator="{ on, attrs }">
-                  <v-btn color="transparent" depressed dark v-bind="attrs" v-on="on">
-                    Peleas
-                  </v-btn>
-                </template>
-                <v-list>
-                  <v-list-item v-for="(item, index) in items" :key="index">
-                    <div class="mr-n16">
-                      <router-link style="text-decoration: none; margin-left: 0cm;" v-bind:to="{ name: 'Pelicula' }">
-                        <v-list-tile-avatar>
-                          <img class="imagenMenu" src="https://cdn.vuetifyjs.com/images/john.png">
-                        </v-list-tile-avatar>
-                      </router-link>
-                    </div>
-                    <div class="ml-n16 mr-6">
-                      <router-link style="text-decoration: none; margin-left: 0cm;" v-bind:to="{ name: 'Pelicula' }">
-                        <v-list-item-title class="tituloItems">{{ item.title }}</v-list-item-title>
-                      </router-link>
-                    </div>
-                    <v-spacer></v-spacer>
-                    <router-link style="text-decoration: none; color: black;" v-bind:to="{ name: 'Pelicula' }">
-                      <v-list-tile-content>
-                        hodsadlalsdlsaldsa
-                      </v-list-tile-content>
-                    </router-link>
-
-                  </v-list-item>
-                </v-list>
-              </v-menu>
-              <v-menu open-on-hover offset-y>
-                <template v-slot:activator="{ on, attrs }">
-                  <v-btn color="transparent" depressed dark v-bind="attrs" v-on="on">
-                    Peleas
-                  </v-btn>
-                </template>
-                <v-list>
-                  <v-list-item v-for="(item, index) in items" :key="index">
-                    <div class="mr-n16">
-                      <router-link style="text-decoration: none; margin-left: 0cm;" v-bind:to="{ name: 'Pelicula' }">
-                        <v-list-tile-avatar>
-                          <img class="imagenMenu" src="https://cdn.vuetifyjs.com/images/john.png">
-                        </v-list-tile-avatar>
-                      </router-link>
-                    </div>
-                    <div class="ml-n16 mr-6">
-                      <router-link style="text-decoration: none; margin-left: 0cm;" v-bind:to="{ name: 'Pelicula' }">
-                        <v-list-item-title class="tituloItems">{{ item.title }}</v-list-item-title>
-                      </router-link>
-                    </div>
-                    <v-spacer></v-spacer>
-                    <router-link style="text-decoration: none; color: black;" v-bind:to="{ name: 'Pelicula' }">
-                      <v-list-tile-content>
-                        hodsadlalsdlsaldsa
-                      </v-list-tile-content>
-                    </router-link>
-
-                  </v-list-item>
-                </v-list>
-              </v-menu>
-              <v-menu open-on-hover offset-y>
-                <template v-slot:activator="{ on, attrs }">
-                  <v-btn color="transparent" depressed dark v-bind="attrs" v-on="on">
-                    Peleas
-                  </v-btn>
-                </template>
-                <v-list>
-                  <v-list-item v-for="(item, index) in items" :key="index">
-                    <div class="mr-n16">
-                      <router-link style="text-decoration: none; margin-left: 0cm;" v-bind:to="{ name: 'Pelicula' }">
-                        <v-list-tile-avatar>
-                          <img class="imagenMenu" src="https://cdn.vuetifyjs.com/images/john.png">
-                        </v-list-tile-avatar>
-                      </router-link>
-                    </div>
-                    <div class="ml-n16 mr-6">
-                      <router-link style="text-decoration: none; margin-left: 0cm;" v-bind:to="{ name: 'Pelicula' }">
-                        <v-list-item-title class="tituloItems">{{ item.title }}</v-list-item-title>
-                      </router-link>
-                    </div>
-                    <v-spacer></v-spacer>
-                    <router-link style="text-decoration: none; color: black;" v-bind:to="{ name: 'Pelicula' }">
-                      <v-list-tile-content>
-                        hodsadlalsdlsaldsa
-                      </v-list-tile-content>
-                    </router-link>
-
-                  </v-list-item>
-                </v-list>
-              </v-menu>
               <div>
                 <router-link style="text-decoration: none; margin-left: 0cm;" v-bind:to="{ name: 'AgregarVideojuego' }">
                   <v-btn color="transparent" depressed class="mt-3">
@@ -545,6 +70,15 @@
                 </router-link>
               </div>
               <div>
+                <router-link style="text-decoration: none; margin-left: 0cm;" v-bind:to="{ name: 'AgregarGenero' }">
+                  <v-btn color="transparent" depressed class="mt-3">
+                    <v-icon>mdi-plus</v-icon>
+                    <span>Agregar género</span>
+                  </v-btn>
+                </router-link>
+              </div>
+
+              <div>
                 <router-link style="text-decoration: none; margin-left: 0cm;" v-bind:to="{ name: 'Login' }">
                   <v-btn color="transparent" depressed class="mt-3">
                     <v-icon>mdi-account</v-icon>
@@ -552,9 +86,42 @@
                   </v-btn>
                 </router-link>
               </div>
+              <div>
+                <v-menu offset-y open-on-click>
+                  <template v-slot:activator="{ on, attrs }">
+                    <v-btn color="transparent" depressed class="mt-3" v-on="on" v-bind="attrs">
+                      <v-icon>mdi-dots-vertical</v-icon>
+
+                    </v-btn>
+                  </template>
+                  <v-list
+                    style="background-image: url('https://www.bhmpics.com/downloads/gaming-wallpapers-/2.canva-purple-blue-neon-gaming-desktop-backgrounds-pwyzmwkptug.jpg');">
+                    <router-link style="text-decoration: none;" v-bind:to="{ name: 'EliminarVideojuego' }">
+                      <v-btn color="transparent" depressed>
+                        <v-icon color="white">mdi-delete</v-icon>
+                        <span class="white--text">Eliminar videojuegos</span>
+                      </v-btn>
+                    </router-link>
+
+                    <router-link style="text-decoration: none; margin-left: 0cm;" v-bind:to="{ name: 'EliminarGenero' }">
+                      <v-btn color="transparent" depressed class="mt-3">
+                        <v-icon color="white">mdi-delete</v-icon>
+                        <span class="white--text">Eliminar géneros</span>
+                      </v-btn>
+                    </router-link>
+
+
+                  </v-list>
+                </v-menu>
+                <router-link style="text-decoration: none; margin-left: 0cm;" v-bind:to="{ name: 'AgregarGenero' }">
+
+                </router-link>
+              </div>
               <v-spacer></v-spacer>
             </v-toolbar-items>
           </v-slide-group>
+
+
           <!-- segundo menu, por si la pantall es chica -->
 
           <v-toolbar-items class="hidden-md-and-up">
@@ -563,13 +130,13 @@
               <template v-slot:activator="{ on, attrs }">
                 <div>
                   <router-link style="text-decoration: none; margin-left: 0cm;" v-bind:to="{ name: 'Login' }">
-                    <v-btn color="transparent" depressed class="mt-15 ml-n3">
+                    <v-btn color="transparent" depressed class="mt-15 ml-n7">
                       <v-icon>mdi-account</v-icon>
                       <span>iniciar sesion</span>
                     </v-btn>
                   </router-link>
                 </div>
-                <v-btn flat icon color="white" depressed dark v-bind="attrs" v-on="on" class="mt-3 ml-n5">
+                <v-btn flat icon color="white" depressed dark v-bind="attrs" v-on="on" class="mt-3 ml-n6">
                   <v-icon>mdi-view-headline</v-icon>
                 </v-btn>
               </template>
@@ -581,161 +148,78 @@
                     <span class="white--text">Agregar videojuego</span>
                   </v-btn>
                 </router-link>
-                <v-menu open-on-hover offset-y>
+
+                <router-link style="text-decoration: none; margin-left: 0cm;" v-bind:to="{ name: 'AgregarGenero' }">
+                  <v-btn color="transparent" depressed class="mt-3">
+                    <v-icon color="white">mdi-plus</v-icon>
+                    <span class="white--text">Agregar género</span>
+                  </v-btn>
+                </router-link>
+
+                <v-menu open-on-hover offset-y v-for="genero in generos" :key="genero._id">
 
                   <template v-slot:activator="{ on, attrs }">
-                    <v-btn color="transparent" depressed dark v-bind="attrs" v-on="on">
-                      ARPG
+                    <v-btn color="transparent" depressed dark v-bind="attrs, genero._id" v-on="on">
+                      <span class="white--text">{{ genero.nombre }}</span>
                     </v-btn>
                   </template>
                   <v-list>
-                    <v-list-item v-for="(item, index) in items" :key="index">
+                    <v-list-item v-for="videojuego in videojuegos" v-if="videojuego.genero == genero.nombre"
+                      :key="videojuego._id" @click="reloadPage">
                       <div class="mr-n16">
-                        <router-link style="text-decoration: none; margin-left: 0cm;" v-bind:to="{ name: 'Pelicula' }">
+                        <router-link style="text-decoration: none; margin-left: 0cm;"
+                          v-bind:to="`/videojuegos/${videojuego._id}`">
                           <v-list-tile-avatar>
                             <img class="imagenMenu" src="https://cdn.vuetifyjs.com/images/john.png">
                           </v-list-tile-avatar>
                         </router-link>
                       </div>
                       <div class="ml-n16 mr-6">
-                        <router-link style="text-decoration: none; margin-left: 0cm;" v-bind:to="{ name: 'Pelicula' }">
-                          <v-list-item-title class="tituloItems">{{ item.title }}</v-list-item-title>
+                        <router-link style="text-decoration: none; margin-left: 0cm;"
+                          v-bind:to="`/videojuegos/${videojuego._id}`">
+                          <v-list-item-title class="tituloItems">{{ videojuego.titulo }}</v-list-item-title>
                         </router-link>
                       </div>
 
-                      <router-link style="text-decoration: none; color: black;" v-bind:to="{ name: 'Pelicula' }">
+                      <router-link style="text-decoration: none; color: black;"
+                        v-bind:to="`/videojuegos/${videojuego._id}`">
                         <v-list-tile-content>
-                          hodsadlalsdlsaldsa
+                          {{videojuego.genero}}
                         </v-list-tile-content>
                       </router-link>
 
                     </v-list-item>
                   </v-list>
                 </v-menu>
-                <v-menu open-on-hover offset-y>
-                  <template v-slot:activator="{ on, attrs }">
-                    <v-btn color="transparent" depressed dark v-bind="attrs" v-on="on">
-                      Mundo abierto
-                    </v-btn>
-                  </template>
-                  <v-list>
-                    <v-list-item v-for="(item, index) in items" :key="index">
-                      <div class="mr-n16">
-                        <router-link style="text-decoration: none; margin-left: 0cm;" v-bind:to="{ name: 'Pelicula' }">
-                          <v-list-tile-avatar>
-                            <img class="imagenMenu" src="https://cdn.vuetifyjs.com/images/john.png">
-                          </v-list-tile-avatar>
-                        </router-link>
-                      </div>
-                      <div class="ml-n16 mr-6">
-                        <router-link style="text-decoration: none; margin-left: 0cm;" v-bind:to="{ name: 'Pelicula' }">
-                          <v-list-item-title class="tituloItems">{{ item.title }}</v-list-item-title>
-                        </router-link>
-                      </div>
-                      <v-spacer></v-spacer>
-                      <router-link style="text-decoration: none; color: black;" v-bind:to="{ name: 'Pelicula' }">
-                        <v-list-tile-content>
-                          hodsadlalsdlsaldsa
-                        </v-list-tile-content>
-                      </router-link>
 
-                    </v-list-item>
-                  </v-list>
-                </v-menu>
-                <v-menu open-on-hover offset-y>
-                  <template v-slot:activator="{ on, attrs }">
-                    <v-btn color="transparent" depressed dark v-bind="attrs" v-on="on">
-                      SandBox
-                    </v-btn>
-                  </template>
-                  <v-list>
-                    <v-list-item v-for="(item, index) in items" :key="index">
-                      <div class="mr-n16">
-                        <router-link style="text-decoration: none; margin-left: 0cm;" v-bind:to="{ name: 'Pelicula' }">
-                          <v-list-tile-avatar>
-                            <img class="imagenMenu" src="https://cdn.vuetifyjs.com/images/john.png">
-                          </v-list-tile-avatar>
-                        </router-link>
-                      </div>
-                      <div class="ml-n16 mr-6">
-                        <router-link style="text-decoration: none; margin-left: 0cm;" v-bind:to="{ name: 'Pelicula' }">
-                          <v-list-item-title class="tituloItems">{{ item.title }}</v-list-item-title>
-                        </router-link>
-                      </div>
-                      <v-spacer></v-spacer>
-                      <router-link style="text-decoration: none; color: black;" v-bind:to="{ name: 'Pelicula' }">
-                        <v-list-tile-content>
-                          hodsadlalsdlsaldsa
-                        </v-list-tile-content>
-                      </router-link>
-
-                    </v-list-item>
-                  </v-list>
-                </v-menu>
-                <v-menu open-on-hover offset-y>
-                  <template v-slot:activator="{ on, attrs }">
-                    <v-btn color="transparent" depressed dark v-bind="attrs" v-on="on">
-                      Deportes
-                    </v-btn>
-                  </template>
-                  <v-list>
-                    <v-list-item v-for="(item, index) in items" :key="index">
-                      <div class="mr-n16">
-                        <router-link style="text-decoration: none; margin-left: 0cm;" v-bind:to="{ name: 'Pelicula' }">
-                          <v-list-tile-avatar>
-                            <img class="imagenMenu" src="https://cdn.vuetifyjs.com/images/john.png">
-                          </v-list-tile-avatar>
-                        </router-link>
-                      </div>
-                      <div class="ml-n16 mr-6">
-                        <router-link style="text-decoration: none; margin-left: 0cm;" v-bind:to="{ name: 'Pelicula' }">
-                          <v-list-item-title class="tituloItems">{{ item.title }}</v-list-item-title>
-                        </router-link>
-                      </div>
-                      <v-spacer></v-spacer>
-                      <router-link style="text-decoration: none; color: black;" v-bind:to="{ name: 'Pelicula' }">
-                        <v-list-tile-content>
-                          hodsadlalsdlsaldsa
-                        </v-list-tile-content>
-                      </router-link>
-
-                    </v-list-item>
-                  </v-list>
-                </v-menu>
-                <v-menu open-on-hover offset-y>
-                  <template v-slot:activator="{ on, attrs }">
-                    <v-btn color="transparent" depressed dark v-bind="attrs" v-on="on">
-                      Peleas
-                    </v-btn>
-                  </template>
-                  <v-list>
-                    <v-list-item v-for="(item, index) in items" :key="index">
-                      <div class="mr-n16">
-                        <router-link style="text-decoration: none; margin-left: 0cm;" v-bind:to="{ name: 'Pelicula' }">
-                          <v-list-tile-avatar>
-                            <img class="imagenMenu" src="https://cdn.vuetifyjs.com/images/john.png">
-                          </v-list-tile-avatar>
-                        </router-link>
-                      </div>
-                      <div class="ml-n16 mr-6">
-                        <router-link style="text-decoration: none; margin-left: 0cm;" v-bind:to="{ name: 'Pelicula' }">
-                          <v-list-item-title class="tituloItems">{{ item.title }}</v-list-item-title>
-                        </router-link>
-                      </div>
-                      <v-spacer></v-spacer>
-                      <router-link style="text-decoration: none; color: black;" v-bind:to="{ name: 'Pelicula' }">
-                        <v-list-tile-content>
-                          hodsadlalsdlsaldsa
-                        </v-list-tile-content>
-                      </router-link>
-
-                    </v-list-item>
-
-                  </v-list>
-                </v-menu>
               </v-list>
             </v-menu>
+            <v-menu offset-y open-on-click>
+                  <template v-slot:activator="{ on, attrs }">
+                    <v-btn color="transparent" depressed class="mt-3 ml-n6" v-on="on" v-bind="attrs">
+                      <v-icon>mdi-dots-vertical</v-icon>
 
+                    </v-btn>
+                  </template>
+                  <v-list
+                    style="background-image: url('https://www.bhmpics.com/downloads/gaming-wallpapers-/2.canva-purple-blue-neon-gaming-desktop-backgrounds-pwyzmwkptug.jpg');">
+                    <router-link style="text-decoration: none;" v-bind:to="{ name: 'EliminarVideojuego' }">
+                      <v-btn color="transparent" depressed>
+                        <v-icon color="white">mdi-delete</v-icon>
+                        <span class="white--text">Eliminar videojuegos</span>
+                      </v-btn>
+                    </router-link>
+
+                    <router-link style="text-decoration: none; margin-left: 0cm;" v-bind:to="{ name: 'EliminarGenero' }">
+                      <v-btn color="transparent" depressed class="mt-3">
+                        <v-icon color="white">mdi-delete</v-icon>
+                        <span class="white--text">Eliminar géneros</span>
+                      </v-btn>
+                    </router-link>
+
+
+                  </v-list>
+                </v-menu>
           </v-toolbar-items>
 
         </v-toolbar>
@@ -743,43 +227,7 @@
 
       </div>
     </template>
-    <!-- <v-navigation-drawer fixed v-model="drawer" app>
-      <v-list dense>
-        <v-list-item>
-          <v-list-item-action>
-            <v-icon>home</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>Inicio</v-list-item-content>
-        </v-list-item>
-        <router-link v-bind:to="{ name: 'Contacto' }" class="side_bar_link">
-          <v-list-item>
-            <v-list-item-action>
-              <v-icon>contact_mail</v-icon>
-            </v-list-item-action>
-            <v-list-item-content>Contacto</v-list-item-content>
-          </v-list-item>
-        </router-link>
 
-        <router-link v-bind:to="{ name: 'Registro' }" class="side_bar_link">
-          <v-list-item>
-            <v-list-item-action>
-
-            </v-list-item-action>
-          </v-list-item>
-        </router-link>
-      </v-list>
-    </v-navigation-drawer> -->
-
-    <!-- <v-app-bar color="indigo" dark fixes app>
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer">
-        <v-icon>{{ drawer ? 'close' : 'menu' }}</v-icon>
-      </v-app-bar-nav-icon>
-      <v-app-bar-title>Inicio</v-app-bar-title>
-      <v-spacer></v-spacer>
-      <v-toolbar-items class="hidden-sm-and-down">
-        <v-btn v-bind:to="{ name: 'AgregarPelicula' }">Agregar Película</v-btn>
-      </v-toolbar-items>
-    </v-app-bar> -->
 
     <v-main>
       <v-container fluid>
@@ -823,18 +271,54 @@
 </template>
 
 <script>
-import './assets/stylesheets/main.css';
+/* eslint-disable */
+import axios from 'axios';
+//import '../assets/stylesheets/main.css';
 
-export default {
-  data: () => ({
-    drawer: null,
-    items: [
-      { title: 'Click Me' },
-      { title: 'Click Me' },
-      { title: 'Click Me' },
-      { title: 'Click Me 2' },
-    ],
 
-  }),
+
+
+const refreshPage = () => {
+  location.reload();
 };
+export default {
+  name: 'App',
+  data() {
+    return {
+
+      items: [
+        { title: 'Click Me' },
+        { title: 'Click Me' },
+        { title: 'Click Me' },
+        { title: 'Click Me 2' },
+      ],
+      generos: [],
+      videojuegos: [],
+    };
+  },
+  mounted() {
+    axios.get(`http://localhost:8081/generos`)
+      .then((response) => {
+        console.log(response.data);
+        this.generos = response.data;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    axios.get('http://localhost:8081/videojuegos')
+      .then((response) => {
+        console.log(response.data);
+        this.videojuegos = response.data;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+  },
+  methods: {
+    reloadPage() {
+      window.location.reload();
+    }
+  }
+}
 </script>

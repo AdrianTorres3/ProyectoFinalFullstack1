@@ -1,93 +1,24 @@
-<!-- <template>
-    <v-form v-model="valido" ref="formulario" lazy-validation>
-        <v-text-field
-            label="Película:"
-            v-model="nombre"
-            :rules="reglasNombre"
-            required
-        ></v-text-field>
-        <v-text-field
-            label="Sinopsis:"
-            v-model="sinopsis"
-            multi-line
-        ></v-text-field>
-        <v-select
-            label="Año de publicación:"
-            v-model="anhopub"
-            required
-            :rules="reglasPublicacion"
-            :items="anhos"
-        ></v-select>
-        <v-text-field
-            label="Género:"
-            v-model="genero"
-            required
-            :rules="reglasGenero"
-        ></v-text-field>
-        <v-btn
-            @click="guardar"
-            :disabled="!valido"
-        >Guardar</v-btn>
-        <v-btn @click="limpiar">Limpiar</v-btn>
-    </v-form>
-</template> -->
+
 <template>
   <v-form v-model="valido" ref="formulario" lazy-validation>
-      <v-text-field
-          label="Título videojuego:"
-          v-model="titulo"
-          :rules="reglasTitulo"
-          required
-      ></v-text-field>
-      <v-select
-          label="Género:"
-          v-model="genero"
-          required
-          :rules="reglasGenero"
-          :items="generos"
-      ></v-select>
-      <v-text-field
-          label="Fecha de lanzamiento:"
-          v-model="lanzamiento"
-          required
-          :rules="reglasLanzamiento"
-      ></v-text-field>
-      <v-text-field
-          label="Desarrollador:"
-          v-model="desarrollador"
-          required
-          :rules="reglasDesarrollador"
-      ></v-text-field>
-      <v-text-field
-          label="Precio:"
-          v-model="precio"
-          required
-          :rules="reglasPrecio"
-      ></v-text-field>
-      <v-text-field
-          label="Plataformas:"
-          v-model="plataformas"
-          multi-line
-          required
-          :rules="reglasPlataformas"
-      ></v-text-field>
-      <v-text-field
-          label="Descripción:"
-          v-model="descripcion"
-          multi-line
-          required
-          :rules="reglasDescripcion"
-      ></v-text-field>
-      <v-btn
-          @click="guardar"
-          :disabled="!valido"
-      >Guardar</v-btn>
-      <v-btn @click="limpiar">Limpiar</v-btn>
+    <v-text-field label="Título videojuego:" v-model="titulo" :rules="reglasTitulo" required></v-text-field>
+    <v-select label="Género:" v-model="genero" required :rules="reglasGenero" :items="generos" item-text="nombre"
+      itemid="id"></v-select>
+    <v-text-field label="Fecha de lanzamiento:" v-model="lanzamiento" required :rules="reglasLanzamiento"></v-text-field>
+    <v-text-field label="Desarrollador:" v-model="desarrollador" required :rules="reglasDesarrollador"></v-text-field>
+    <v-text-field label="Precio:" v-model="precio" required :rules="reglasPrecio"></v-text-field>
+    <v-text-field label="Plataformas:" v-model="plataformas" multi-line required
+      :rules="reglasPlataformas"></v-text-field>
+    <v-text-field label="Descripción:" v-model="descripcion" multi-line required
+      :rules="reglasDescripcion"></v-text-field>
+    <v-btn @click="guardar" :disabled="!valido">Guardar</v-btn>
+    <v-btn @click="limpiar">Limpiar</v-btn>
   </v-form>
 </template>
 
 
 <script>
+/* eslint-disable */
 import axios from 'axios';
 
 export default {
@@ -123,16 +54,18 @@ export default {
       v => !!v || 'Introduce una descripcion sobre el juego',
     ],
     select: null,
-    generos: [
-      'Acción',
-      'Mundo abierto',
-      'Competitivos',
-      'Deportes',
-      'Pelea',
-      'RPG',
-    ],
+    generos: [],
   }),
-
+  mounted() {
+    axios.get(`http://localhost:8081/generos`)
+      .then((response) => {
+        console.log(response.data);
+        this.generos = response.data;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  },
   methods: {
     guardar() {
       if (this.$refs.formulario.validate()) {
@@ -159,6 +92,7 @@ export default {
               'success',
             );
             this.$router.push({ name: 'Inicio' });
+            location.reload();
             this.$refs.formulario.reset();
           })
           .catch(() => {

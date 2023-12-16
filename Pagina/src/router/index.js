@@ -3,9 +3,12 @@ import Router from 'vue-router';
 import Inicio from '@/components/Inicio';
 import Contacto from '@/components/Contacto';
 import AgregarVideojuego from '@/components/AgregarVideojuego';
-import Pelicula from '@/components/Pelicula';
+import EliminarVideojuego from '@/components/EliminarVideojuego';
+import Videojuego from '@/components/Videojuego';
 import Registro from '@/components/Registro';
 import Login from '@/components/Login';
+import AgregarGenero from '@/components/AgregarGenero';
+import EliminarGenero from '@/components/EliminarGenero';
 
 Vue.use(Router);
 
@@ -28,11 +31,25 @@ export default new Router({
       component: AgregarVideojuego,
     },
     {
-      path: '/pelicula',
-      name: 'Pelicula',
-      component: Pelicula,
+      path: '/videojuegos/eliminar',
+      name: 'EliminarVideojuego',
+      component: EliminarVideojuego,
     },
-    //  pelicula/:id
+    {
+      path: '/videojuegos/:id',
+      name: 'Videojuego',
+      component: Videojuego,
+    },
+    {
+      path: '/generos/agregar',
+      name: 'AgregarGenero',
+      component: AgregarGenero,
+    },
+    {
+      path: '/generos/eliminar',
+      name: 'EliminarGenero',
+      component: EliminarGenero,
+    },
     {
       path: '/usuarios/registro',
       name: 'Registro',

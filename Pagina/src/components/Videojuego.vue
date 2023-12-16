@@ -9,33 +9,33 @@
       <v-col>
         <v-card elevation="15" class="rounded-xl">
           <v-card-title class="text-h3 mb-5">
-            The elder scrolls: Skyrim
+             {{ videojuego.titulo }}
           </v-card-title>
           <v-card-subtitle class="text-left text h3">
-            Género: RPG, mundo abierto, acción
+            Género: {{videojuego.genero}}
           </v-card-subtitle>
           <v-card-subtitle class="text-left text h4 mt-n6">
-            Fecha de lanzamiento: 2015
+            Fecha de lanzamiento: {{videojuego.lanzamiento}}
           </v-card-subtitle>
           <v-card-subtitle class="text-left text h4 mt-n6">
-            Desarrollador: Bethesda games
+            Desarrollador: {{videojuego.desarrollador}}
           </v-card-subtitle>
           <v-card-subtitle class="text-left text h4 mt-n6">
-            Precio: $ 400
+            Precio: {{videojuego.precio}}
           </v-card-subtitle>
           <v-card-subtitle class="text-left text h4 mt-n6">
-            Plataformas: PC, Xbox, Play station
+            Plataformas: ´{{ videojuego.plataformas }}
           </v-card-subtitle>
           <v-card-subtitle class="text-left text h4 mt-n6 mb-n2">
             Descripción:
           </v-card-subtitle>
           <v-card-text class="text-left">
-            Es un juego de accion y mundo abierto, lleno de peligros en cada momento.
+           {{videojuego.descripcion}}
           </v-card-text>
         </v-card>
       </v-col>
     </v-row>
-    <v-layout row wrap>
+    <!-- <v-layout row wrap>
       <v-flex xs4>
         <v-card>
           <v-card-title primary-title>
@@ -53,11 +53,13 @@
           </v-card-text>
         </v-card>
       </v-flex>
-    </v-layout>
+    </v-layout> -->
   </v-container>
 </template>
 
 <script>
+/* eslint-disable */
+
 import axios from 'axios';
 import Vue from 'vue';
 import StarRating from 'vue-star-rating';
@@ -91,16 +93,26 @@ const ComponenteCalif = Vue.extend({
 });
 
 const componente = new ComponenteCalif().$mount(wrapper);
-
+const self= this;
 export default {
-  name: 'Pelicula',
+  name: 'Videojuego',
   data() {
     return {
-      pelicula: [],
+      videojuego: [],
+      
     };
   },
   mounted() {
-    this.obtenerPelicula();
+    
+    axios.get(`http://localhost:8081/videojuegos/${this.$route.params.id}`)
+      .then((response) => {
+        console.log(response.data);
+        this.videojuego = response.data;
+        
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   },
   methods: {
     async calificar() {
