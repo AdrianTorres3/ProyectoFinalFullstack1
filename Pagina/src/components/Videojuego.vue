@@ -24,7 +24,7 @@
             Precio: {{videojuego.precio}}
           </v-card-subtitle>
           <v-card-subtitle class="text-left text h4 mt-n6">
-            Plataformas: ´{{ videojuego.plataformas }}
+            Plataformas: {{ videojuego.plataformas }}
           </v-card-subtitle>
           <v-card-subtitle class="text-left text h4 mt-n6 mb-n2">
             Descripción:

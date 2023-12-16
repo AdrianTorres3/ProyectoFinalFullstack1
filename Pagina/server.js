@@ -6,12 +6,12 @@ const morgan = require('morgan');
 const fs = require('fs');
 const jwt = require('jsonwebtoken');
 const passport = require('passport');
-const passportJWT = require('passport-jwt');
-const ExtractJwt = passportJWT.ExtractJwt;
-const JwtStrategy = passportJWT.Strategy;
-const jwtOptions = {};
-jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeaderWithScheme('jwt');
-jwtOptions.secretOrKey = 'llavesecretaappcalificacionespeliculas';
+//const passportJWT = require('passport-jwt');
+//const ExtractJwt = passportJWT.ExtractJwt;
+//const JwtStrategy = passportJWT.Strategy;
+//const jwtOptions = {};
+//jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeaderWithScheme('jwt');
+//jwtOptions.secretOrKey = 'llavesecretaappcalificacionespeliculas';
 
 const app = express();
 const router = express.Router();
@@ -21,7 +21,7 @@ app.use(morgan('combined'));
 app.use(bodyParser.json());
 app.use(cors());
 app.use(passport.initialize());
-
+require('./config/passport')(passport);
 // conexión a mongodb
 mongoose.connect('mongodb://localhost/videojuegos').then( () => {
     console.log('Conexion con la base de datos realizada');

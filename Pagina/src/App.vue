@@ -82,7 +82,8 @@
                 <router-link style="text-decoration: none; margin-left: 0cm;" v-bind:to="{ name: 'Login' }">
                   <v-btn color="transparent" depressed class="mt-3">
                     <v-icon>mdi-account</v-icon>
-                    <span>iniciar sesion</span>
+                    <span v-if="usuario!=null">{{usuario}}</span>
+                    <span v-else> iniciar sesión </span>
                   </v-btn>
                 </router-link>
               </div>
@@ -283,9 +284,10 @@ const refreshPage = () => {
 };
 export default {
   name: 'App',
+  
   data() {
     return {
-
+      usuario: window.localStorage.getItem('nombreUsuario'),
       items: [
         { title: 'Click Me' },
         { title: 'Click Me' },

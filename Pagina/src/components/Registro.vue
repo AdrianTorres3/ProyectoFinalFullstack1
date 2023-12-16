@@ -57,6 +57,7 @@ export default {
             nombre: this.nombre,
             email: this.email,
             contrasenha: this.contrasenha,
+            confirmar_contrasenha: this.confirmar_contrasenha,
           },
           url: 'http://localhost:8081/usuarios/registro',
           headers: {
