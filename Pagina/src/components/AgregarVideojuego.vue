@@ -11,7 +11,8 @@
       :rules="reglasPlataformas"></v-text-field>
     <v-text-field label="Descripción:" v-model="descripcion" multi-line required
       :rules="reglasDescripcion"></v-text-field>
-    <v-text-field label="Imagen:" v-model="imagen" multi-line></v-text-field>
+    <!-- <v-text-field label="Imagen:" v-model="imagen" multi-line></v-text-field> -->
+    <v-file-input accept="image/*" label="Sube imagen" v-model="imagen"></v-file-input>
     <v-btn @click="guardar" :disabled="!valido">Guardar</v-btn>
     <v-btn @click="limpiar">Limpiar</v-btn>
   </v-form>

@@ -99,7 +99,7 @@
                   </v-btn>
                 </router-link>
               </div>
-              <!-- <div>
+              <div>
 
                 <v-btn color="transparent" depressed class="mt-3" v-if="usuario != null" @click="logout">
                   <v-icon>mdi-logout</v-icon>
@@ -109,7 +109,7 @@
 
                 </v-btn>
 
-              </div> -->
+              </div>
               <div>
                 <v-menu offset-y open-on-click>
                   <template v-slot:activator="{ on, attrs }">
@@ -372,8 +372,9 @@ export default {
       window.location.reload();
     },
     logout() {
-      axios.post('http://localhost:8081/logout')
-
+      window.localStorage.removeItem('auth');
+      window.localStorage.removeItem('nombreUsuario');
+      window.location.reload();
     }
   }
 }

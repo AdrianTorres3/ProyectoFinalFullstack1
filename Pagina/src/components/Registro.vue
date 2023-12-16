@@ -65,7 +65,7 @@ export default {
           },
         })
           .then(() => {
-            this.$swal('¡Maravilloso!', 'Usted por ha podido registrarse', 'success');
+            this.$swal('Usted por se ha registrado exitosamente', 'success');
             this.$router.push({ name: 'Login' });
           })
           .catch((error) => {

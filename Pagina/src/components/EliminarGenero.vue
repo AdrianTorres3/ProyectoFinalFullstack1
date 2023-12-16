@@ -225,7 +225,7 @@ export default {
             axios.delete(`http://localhost:8081/generos`)
                 .then(() => {
                     this.obtenerGeneros();
-
+                    window.location.reload();
                 })
                 .catch((error) => {
                     console.log(error);

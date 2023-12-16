@@ -48,7 +48,7 @@ export default {
         .then((respuesta) => {
           window.localStorage.setItem('auth', respuesta.data.token);
           window.localStorage.setItem('nombreUsuario', respuesta.data.nombre);
-          this.$swal('Ma-ra-vi-llo-so!', 'Está listo para iniciar', 'success');
+          this.$swal('Has iniciado con exito', 'Redirigiendote...', 'success');
           this.$router.push({ name: 'Inicio' });
           window.location.reload();
         })
