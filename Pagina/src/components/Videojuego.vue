@@ -48,7 +48,8 @@
       </v-card>
     </v-row>
 
-    <v-btn class="mt-10" color="primary" v-bind:to="`/comentarios/${videojuego.titulo}`">Agregar comentario</v-btn>
+    <v-btn  class="mt-10" color="primary" v-bind:to="`/comentarios/${videojuego.titulo}`">Agregar comentario</v-btn>
+    <!-- <v-btn v-else hidden class="mt-10" color="primary" v-bind:to="`/comentarios/${videojuego.titulo}`">Agregar comentario</v-btn> -->
   </v-container>
 </template>
 

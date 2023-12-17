@@ -2,10 +2,20 @@
 const EsquemaVideojuego = require('../modelos/Videojuego');
 const Calificacion = require('../modelos/Calificacion');
 const passport = require('passport')
-
+// const multer = require('multer');
+// const storage = multer.diskStorage({
+//     destination: (req,file,cb) =>{
+//         cb(null,'/src/Images')
+//     },
+//     filename: (req,file,cb)=>{
+//         console.log(file)
+//         cb(null,Date.now()+ path.extname(file.originalname))
+//     }
+// })
+// const upload = multer({storage:storage});
 module.exports.controller = (app) => {
     //Agregar un videojuego
-    app.post('/videojuegos', (req, res) => {
+    app.post('/videojuegos',(req, res) => {
         const nuevoVideojuego = new EsquemaVideojuego({
             titulo: req.body.titulo,
             genero: req.body.genero,
@@ -14,7 +24,8 @@ module.exports.controller = (app) => {
             precio: req.body.precio,
             plataformas: req.body.plataformas,
             descripcion: req.body.descripcion,
-            imagen: req.body.imagen
+            imagen:req.body.imagen
+            
         });
 
         nuevoVideojuego.save()

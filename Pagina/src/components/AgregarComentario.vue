@@ -1,7 +1,7 @@
 
 <template>
     <v-form v-model="valido" ref="formulario" lazy-validation>
-        <v-text-field label="Género:" v-model="this.$route.params.nombre_videojuego" required disabled>
+        <v-text-field label="Videojuego:" v-model="this.$route.params.nombre_videojuego" required disabled>
             hola </v-text-field>
         <v-text-field label="Nombre usuario:" v-model="usuario" disabled></v-text-field>
         <v-text-field label="Comentario:" v-model="comentario" multi-line required></v-text-field>

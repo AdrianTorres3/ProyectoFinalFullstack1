@@ -60,9 +60,9 @@
                             </v-card-actions>
                         </v-card>
                     </v-dialog>
-                    <v-dialog v-model="dialogDelete" max-width="500px">
+                    <v-dialog v-model="dialogDelete" max-width="800px">
                         <v-card>
-                            <v-card-title class="text-h5">¿Estas seguro de querer eliminar este genero? </v-card-title>
+                            <v-card-title class="text-h5">¿Estas seguro de querer eliminar este videojuego? </v-card-title>
                             <v-card-actions>
                                 <v-spacer></v-spacer>
                                 <v-btn color="blue darken-1" text @click="closeDelete">Cancel</v-btn>
@@ -184,9 +184,6 @@ export default {
         },
 
         deleteItem(item) {
-            this.editedIndex = this.videojuegos.indexOf(item)
-            this.editedItem = Object.assign({}, item)
-            this.dialogDelete = true
             axios.delete(`http://localhost:8081/videojuegos/${item._id}`)
                 .then(() => {
                     window.location.reload();
@@ -196,6 +193,10 @@ export default {
                     console.log(error);
 
                 });
+            this.editedIndex = this.videojuegos.indexOf(item)
+            this.editedItem = Object.assign({}, item)
+            this.dialogDelete = true
+            
         },
         deleteAll() {
             this.dialogDeleteAll = true
@@ -213,7 +214,7 @@ export default {
             this.closeDelete()
         },
         deleteItemConfirm() {
-
+           
             this.videojuegos.splice(this.editedIndex, 1)
             this.closeDelete()
         },

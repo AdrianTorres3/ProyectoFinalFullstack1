@@ -180,28 +180,18 @@ export default {
             this.editedIndex = this.generos.indexOf(item)
             this.editedItem = Object.assign({}, item)
             this.dialogDelete = true
-            for (const genero in this.generos) {
-                for (const videojuego in this.videojuegos) {
-                    let generoVideojuego = videojuego.genero;
-                    let nombreGenero = genero.nombre;
-                    if (generoVideojuego == nombreGenero) {
-                        this.dialogError = true
-                        console.log('NO PUEDES')
-                        window.location.reload();
-                        return
-                    }
-                }
-
-            }
+            
             axios.delete(`http://localhost:8081/generos/${item._id}`)
                 .then(() => {
                     this.obtenerGeneros();
+                    window.location.reload();
 
                 })
                 .catch((error) => {
                     console.log(error);
                     this.obtenerGeneros();
                 });
+            
         },
         deleteAll() {
             for (const genero in this.generos) {
@@ -236,6 +226,7 @@ export default {
             
             this.generos.splice(this.editedIndex, 1)
             this.closeDelete()
+            window.location.reload()
         },
         errorConfirm() {
 

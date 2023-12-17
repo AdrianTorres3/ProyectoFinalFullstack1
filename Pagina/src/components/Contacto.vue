@@ -39,7 +39,7 @@
         <div class="mr-n16">
           <v-list-tile-avatar>
             <img class="rounded-circle pa-7" width="28%"
-              src="https://media-dfw5-1.cdn.whatsapp.net/v/t61.24694-24/403674313_213626581768965_7714839445517544153_n.jpg?ccb=11-4&oh=01_AdQ2nVT7le1bD3656DWWfcv9bn-XMjtQ0FwydachkvCjAA&oe=658A4106&_nc_sid=e6ed6c&_nc_cat=103">
+              src="https://media-dfw5-1.cdn.whatsapp.net/v/t61.24694-24/409082459_626443286181020_908833156842651282_n.jpg?ccb=11-4&oh=01_AdR4eW0yMIjZ4RR_9GIE3ywz7KoHxVXt8l_YDB5WJYh8og&oe=658B4222&_nc_sid=e6ed6c&_nc_cat=105">
           </v-list-tile-avatar>
         </div>
         <div class="mr-6 ml-n12">
@@ -47,7 +47,8 @@
         </div>
         <v-spacer></v-spacer>
         <v-list-tile-content>
-
+          arturo.rosales.arv@gmail.com
+          <br>
           871 501 1622
         </v-list-tile-content>
       </v-list-item>
